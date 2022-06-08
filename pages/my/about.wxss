@@ -1,0 +1,57 @@
+page,
+.page {
+    background-color: #f7f7f7;
+}
+
+.weui-msg {
+    margin-top: 100px;
+    text-align: left;
+}
+
+.one-panel {
+    margin-top: 10px;
+    background-color: white;
+}
+
+.title {
+    margin-left: 5px;
+    border-left-width: 5px;
+    border-left-color: #008FD1;
+    border-left-style: solid;
+}
+
+.desc {
+    font-size: 0.7em;
+}
+
+.weui-msg__text-area {
+    margin-bottom: 10px;
+}
+
+.qr-tip {
+    margin-bottom: 10px;
+    text-indent: 2em;
+    padding: 0 15px 0 15px;
+    letter-spacing: 1px;
+    line-height: 27px;
+}
+
+.qr-img {
+    width: 210px;
+    height: 210px;
+}
+
+.qr-area {
+    margin-bottom: 100px;
+}
+
+.weui-msg__extra-area {
+    margin-bottom: 0;
+}
+
+.bottom-left-button {
+    width: 200px;
+    display: inline-block;
+    background-color: white;
+    padding: 0px 10px 0px 0;
+}

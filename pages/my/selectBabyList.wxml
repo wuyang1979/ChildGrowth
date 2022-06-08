@@ -1,0 +1,29 @@
+<view class="input-baby-info-container">
+    <view class="baby-area" wx:if="{{isChild}}">
+        <image class="change-adult" src="/pages/img/change-adult.png" bindtap="changeAdultOrChild" mode="aspectFill"></image>
+        <view class="title">选择宝贝</view>
+        <view class="baby-item" wx:for="{{babyList}}" wx:key="index" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="selectBaby">
+            <view class="item-name">{{item.name}}</view>
+            <view class="item-gender">{{item.gender==0?'男':'女'}}</view>
+            <image class="item-select-image" src="{{babyId==item.id?'/pages/img/certificate-checked.png':'/pages/img/certificate-unchecked.png'}}" mode="aspectFill"></image>
+        </view>
+        <view class="add-baby" bindtap="addBaby">+ 添加宝贝</view>
+    </view>
+
+    <view class="baby-area" wx:if="{{!isChild}}">
+        <image class="change-adult" src="/pages/img/change-child.png" bindtap="changeAdultOrChild" mode="aspectFill"></image>
+        <view class="title">成人信息</view>
+        <view class="baby-item">
+            <view class="item-tip">姓名：</view>
+            <view class="needed">（必填）</view>
+            <input type="text" class="item-input" value="{{name}}" placeholder="请填写姓名" bindinput="inputName" />
+        </view>
+    </view>
+    <view class="add-baby-btn" bindtap="auth">生成证书</view>
+</view>
+
+<view class="cover-area" wx:if="{{isCoverShow}}">
+    <image class="cover-close" src="/pages/img/close.png" mode="aspectFill" bindtap="closeCover"></image>
+    <image class="qr-image" src="{{certificateUrl}}" data-src="{{certificateUrl}}" bindtap="previewImage"></image>
+    <view class="save-btn" bindtap="save">保存</view>
+</view>

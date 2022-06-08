@@ -1,0 +1,48 @@
+<view class="order-list-container">
+    <view class="top-area">
+        <view class="{{index=='-1'?'all-tab selected':'all-tab'}}" data-index="-1" bindtap="showSelectedList">全部</view>
+        <view class="{{index=='0'?'pedding-pay-tab selected':'pedding-pay-tab'}}" data-index="0" bindtap="showSelectedList">待支付</view>
+        <view class="{{index=='1'?'pedding-receive-tab selected':'pedding-receive-tab'}}" data-index="1" bindtap="showSelectedList">待收货</view>
+        <view class="{{index=='2'?'finished-tab selected':'finished-tab'}}" data-index="2" bindtap="showSelectedList">已完成</view>
+    </view>
+
+    <view class="order-list-area">
+        <view class="order-item" wx:for="{{orderList}}" wx:key="index" data-id="{{item.id}}" data-order_no="{{item.order_no}}" data-name="{{item.name}}" data-status="{{item.status}}" data-order_type="{{item.order_type}}" data-main_image="{{item.main_image}}" data-introduce="{{item.introduce}}" data-create_time="{{item.create_time}}" data-num="{{item.num}}" data-total="{{item.total}}" data-phone="{{item.phone}}" data-customer_service="{{item.customer_service}}" data-product_style="{{item.product_style}}"  bindtap="oneOrder">
+            <view class="order-top-area">
+                <image class="top-image" src="/pages/img/commodity.png" mode="aspectFill"></image>
+                <view class="product-name">{{item.name}}</view>
+                <view class="order-status">{{item.statusValue}}</view>
+            </view>
+            <view class="content-area">
+                <view class="content-left-area">
+                    <image class="main-image" src="{{item.main_image}}" mode="aspectFill"></image>
+                </view>
+                <view class="content-right-area">
+                    <view class="introduce">{{item.introduce}}</view>
+                    <view class="order-info-area">
+                        <view class="order-time">{{item.create_time}}</view>
+                        <view class="order-num">{{'x'+item.num}}</view>
+                        <view class="order-total">{{'￥'+item.total}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="pedding-pay-line" wx:if="{{item.status==0 || item.status==1}}"></view>
+            <view class="pedding-pay-tip-area" wx:if="{{item.status==0}}">
+                <view class="pedding-pay-tip">请在20分钟内完成支付</view>
+                <view style="margin-left: auto;">
+                    <view data-order_id="{{item.id}}" class="pay-btn" catchtap="goPay">去支付</view>
+                </view>
+            </view>
+            <view class="pedding-pay-tip-area" wx:if="{{item.status==1&&item.order_type==0}}">
+                <view style="margin-left: auto;">
+                    <view data-order_id="{{item.id}}" class="confirm-btn" catchtap="confirmReceipt">确认收货</view>
+                </view>
+            </view>
+            <view class="pedding-pay-tip-area" wx:if="{{item.status==1&&item.order_type==1}}">
+                <view style="margin-left: auto;">
+                    <view data-order_id="{{item.id}}" class="confirm-btn">查看核销码</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

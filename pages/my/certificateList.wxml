@@ -1,0 +1,21 @@
+<view class="certificate-list-container">
+    <view class="top-area">
+        <image class="top-image-left" src="/pages/img/certificate-left.png" mode="aspectFill"></image>
+        <view class="title">活动证书</view>
+        <image class="top-image-right" src="/pages/img/certificate-right.png" mode="aspectFill"></image>
+    </view>
+
+    <view class="certificate-item" wx:for="{{certificateList}}" wx:key="index" data-id="{{item.id}}" bindtap="viewCertificate">
+        <view class="item-left-area">
+            <image class="item-main-image" src="{{item.main_image}}" mode="aspectFill"></image>
+        </view>
+        <view class="item-middle-area">
+            <view class="item-activity-name">{{item.activity_name}}</view>
+            <view class="item-certificate-time">{{item.certificate_time}}</view>
+        </view>
+        <view class="item-right-area">
+            <image class="item-right-image" src="/pages/img/certificate-back.png" mode="aspectFill"></image>
+            <view class="view-btn">查看</view>
+        </view>
+    </view>
+</view>

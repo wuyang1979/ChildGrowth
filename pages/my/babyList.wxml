@@ -1,0 +1,10 @@
+<view class="my-baby-container">
+    <view class="baby-item" wx:for="{{babylist}}" wx:key="index" data-id="{{item.id}}" data-name="{{item.name}}" data-gender="{{item.gender}}" data-birthday="{{item.birthday}}" data-identity_card="{{item.identity_card}}" bindtap="editBabyInfo">
+        <view class="baby-name">{{item.name}}</view>
+        <view class="baby-gender">{{item.gender==0?'男':'女'}}</view>
+        <view class="baby-birthday">{{item.birthday}}</view>
+        <image class="baby-edit-image" src="/pages/img/baby-edit.png" mode="aspectFill"></image>
+    </view>
+    <view class="add-baby-btn" bindtap="addBaby">+ 添加宝贝</view>
+    <view class="finish-btn" bindtap="goBack">返回</view>
+</view>

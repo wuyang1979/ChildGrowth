@@ -1,0 +1,69 @@
+<view class="pre-order-container">
+    <view class="{{order_type==0?'user-phone-area':'user-phone-area margin-bottom'}}">
+        <view class="phone-tip">手机号</view>
+        <view class="phone">{{phone}}</view>
+    </view>
+    <view class="user-address-area" wx:if="{{order_type==0&&product_style==1}}">
+        <view class="phone-tip">收货地址</view>
+        <view class="address">{{address}}</view>
+    </view>
+
+    <view class="product-info-area">
+        <view class="product-info">
+            <view class="product-info-left">
+                <image class="product-info-image" src="{{main_image}}" mode="aspectFill"></image>
+            </view>
+            <view class="product-info-right">
+                <view class="product-name">{{name}}</view>
+                <view class="product-introduce">{{introduce}}</view>
+            </view>
+        </view>
+        <view class="order-info">
+            <view class="order-name">{{name}}</view>
+            <view class="order-num">{{'x'+num}}</view>
+            <view class="order-total">{{'￥'+total}}</view>
+        </view>
+    </view>
+
+    <view class="qr-area" wx:if="{{(order_type==1||(order_type==0&&product_style==0))&&status==1}}">
+        <view class="qr-code">核销码</view>
+        <view class="qr-container">
+            <image class="qr-image" src="{{url}}" data-src="{{url}}" bindtap="previewImage"></image>
+        </view>
+        <view class="qr-tip">请凭以上核销码参与活动或核销收货</view>
+        <view class="qr-tip">点击图片，长按以保存</view>
+    </view>
+
+    <view class="tip-area">
+        <view class="tip-title">温馨提示：</view>
+        <view class="tip-content">活动内容与产品服务由商户提供，您支付的钱款最终结算给商户，成长GO平台仅提供技术支持服务</view>
+    </view>
+
+    <view class="price-area">
+        <view class="total-price-area">
+            <view class="total-tip">总价</view>
+            <view class="total-price">{{'￥'+total}}</view>
+        </view>
+        <view class="pay-price-area">
+            <view class="pay-tip">订单实际支付金额</view>
+            <view class="pay-price">{{'￥'+total}}</view>
+        </view>
+    </view>
+
+    <view class="order-area">
+        <view class="order-no-area">
+            <view class="order-no-tip">订单编号：</view>
+            <view class="order-no">{{order_no}}</view>
+        </view>
+        <view class="create-time-area">
+            <view class="create-time-tip">创建时间：</view>
+            <view class="create-time">{{create_time}}</view>
+        </view>
+    </view>
+
+    <view class="consult-area" bindtap="consult">
+        <image class="consult-image" src="/pages/img/customer-service.png" mode="aspectFill"></image>
+        <view class="consult-tip">联系客服</view>
+    </view>
+
+</view>

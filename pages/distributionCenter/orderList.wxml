@@ -1,0 +1,50 @@
+<view class="order-list-container">
+    <view class="top-area">
+        <view class="{{index=='-1'?'all-tab selected':'all-tab'}}" data-index="-1" bindtap="showSelectedList">全部</view>
+        <view class="{{index=='0'?'pedding-pay-tab specialSelected':'pedding-pay-tab'}}" data-index="0" bindtap="showSelectedList">
+            <view class="special-tip">待支付</view>
+            <view class="special-count">{{'（'+peddingPayCouont+'）'}}</view>
+        </view>
+        <view class="{{index=='1'?'pedding-receive-tab specialSelected':'pedding-receive-tab'}}" data-index="1" bindtap="showSelectedList">
+            <view class="special-tip">待收货</view>
+            <view class="special-count">{{'（'+peddingconfirm+'）'}}</view>
+        </view>
+        <view class="{{index=='2'?'finished-tab selected':'finished-tab'}}" data-index="2" bindtap="showSelectedList">已完成</view>
+    </view>
+
+    <view class="order-list-area">
+        <view class="order-item" wx:for="{{orderList}}" wx:key="index" data-id="{{item.id}}" data-order_no="{{item.order_no}}" data-name="{{item.name}}" data-status="{{item.status}}" data-order_type="{{item.order_type}}" data-order_sale_type="{{item.order_sale_type}}" data-main_image="{{item.main_image}}" data-introduce="{{item.introduce}}" data-create_time="{{item.create_time}}" data-pay_time="{{item.pay_time}}" data-num="{{item.num}}" data-total="{{item.total}}" data-price="{{item.price}}" data-retail_commission="{{item.retail_commission}}" data-retail_commission_income="{{item.retail_commission_income}}" data-platform_service_fee="{{item.platform_service_fee}}" data-standard_id="{{item.standard_id}}" data-standard_name="{{item.standardName}}" data-phone="{{item.phone}}" data-product_style="{{item.product_style}}" data-customer_service="{{item.customer_service}}">
+        <!-- bindtap="oneOrder" -->
+            <image class="order-item-sale-image" src="{{item.head_img_url}}"></image>
+            <view class="order-item-nick-name">{{item.nickName}}</view>
+            <view class="order-status">{{item.statusValue}}</view>
+            <view class="content-area">
+                <view class="content-left-area">
+                    <image class="main-image" src="{{item.main_image}}" mode="aspectFill"></image>
+                </view>
+                <view class="content-right-area">
+                    <view class="product-name">{{item.name}}</view>
+                    <view class="order-info-area">
+                        <view class="order-num">{{item.standardName+' x'+item.num}}</view>
+                        <view class="order-price">{{'￥'+item.price}}</view>
+
+                    </view>
+                    <view class="order-total-area">
+                        <view class="order-total-num">{{'共'+item.num+'件商品'}}</view>
+                        <view class="order-total-tipp">{{item.status==0?'买家应付':'买家实付'}}</view>
+                        <view class="order-total">{{'￥'+item.total}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="pedding-pay-line"></view>
+            <view class="order-item-bottom-area">
+                <view class="order-time">{{'下单时间：'+item.create_time}}</view>
+                <view class="order-phone">{{item.phone}}</view>
+                <!-- <view class="pedding-pay-tip-area" wx:if="{{item.status==1&&item.order_type==1&&item.isIssuer}}">
+                    <view data-order_id="{{item.id}}" data-phone="{{item.phone}}" class="confirm-btn" catchtap="writeOff">核销</view>
+                </view> -->
+            </view>
+
+        </view>
+    </view>
+</view>

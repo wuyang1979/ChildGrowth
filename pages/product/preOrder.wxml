@@ -1,0 +1,50 @@
+<view class="pre-order-container">
+    <view class="{{order_type==0?'user-phone-area':'user-phone-area margin-bottom'}}">
+        <view class="phone-tip">手机号</view>
+        <view class="phone">{{phone}}</view>
+    </view>
+    <view class="user-address-area" wx:if="{{order_type==0&&product_style==1}}" bindtap="toAddressPage">
+        <view class="phone-tip">收货地址</view>
+        <view class="address">{{address}}</view>
+        <image class="address-chevron-right" src="/pages/img/chevron-right.png" mode="aspectFill"></image>
+    </view>
+
+    <view class="product-info-area">
+        <view class="product-info">
+            <view class="product-info-left">
+                <image class="product-info-image" src="{{main_image}}" mode="aspectFill"></image>
+            </view>
+            <view class="product-info-right">
+                <view class="product-name">{{name}}</view>
+                <view class="product-introduce">{{introduce}}</view>
+            </view>
+        </view>
+        <view class="order-info">
+            <view class="order-name">{{standardName}}</view>
+            <view class="order-num">{{'x'+num}}</view>
+            <view class="order-total">{{'￥'+total}}</view>
+        </view>
+    </view>
+
+    <view class="tip-area">
+        <view class="tip-title">温馨提示：</view>
+        <view class="tip-content">活动内容与产品服务由商户提供，您支付的钱款最终结算给商户，成长GO平台仅提供技术支持服务</view>
+    </view>
+
+    <view class="bottom-image-area">
+        <image class="ensure-image" src="/pages/img/ensure.png" mode="aspectFill"></image>
+        <view class="ensure-tip">交易保障</view>
+        <image class="refund-image" src="/pages/img/refund.png" mode="aspectFill"></image>
+        <view class="refund-tip">不支持退款</view>
+    </view>
+
+    <view class="cover-bottom-btn-area">
+        <view class="cover-bottom-left">
+            <view class="total-tip">合计</view>
+            <view class="total-count">{{'￥'+total}}</view>
+        </view>
+        <view class="cover-bottom-right" bindtap="goPay">
+            马上支付
+        </view>
+    </view>
+</view>

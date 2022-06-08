@@ -1,0 +1,36 @@
+<view class="tech-container">
+    <image class="top-image" src="/pages/img/tech-image.jpg" mode="aspectFill"></image>
+    <view class="tech-item">
+        <image class="item-image" src="/pages/img/tech-1.png" mode="aspectFill"></image>
+        <view class="item-right-area">
+            <view class="item-right-top" style="color: #a297fd;">丰富的亲子产品库</view>
+            <view class="item-right-bottom">整合本地上千家亲子资源</view>
+        </view>
+    </view>
+    <view class="tech-item">
+        <image class="item-image" src="/pages/img/tech-2.png" mode="aspectFill"></image>
+        <view class="item-right-area">
+            <view class="item-right-top" style="color: #feaf30;">B2B分销</view>
+            <view class="item-right-bottom">一键快速将产品加入小店</view>
+        </view>
+    </view>
+    <view class="tech-item">
+        <image class="item-image" src="/pages/img/tech-3.png" mode="aspectFill"></image>
+        <view class="item-right-area">
+            <view class="item-right-top" style="color: #fe7177;">活动证书</view>
+            <view class="item-right-bottom">活动结束自动生成电子证书</view>
+        </view>
+    </view>
+    <view class="tech-item">
+        <image class="item-image" src="/pages/img/tech-4.png" mode="aspectFill"></image>
+        <view class="item-right-area">
+            <view class="item-right-top" style="color: #58b0f7;">私域运营</view>
+            <view class="item-right-bottom">访客记录、客户行为记录助力商家经营私域流量</view>
+        </view>
+    </view>
+
+    <view class="bottom-area">
+        <view class="bottom-left" bindtap="goBack">返回</view>
+        <view class="bottom-right" bindtap="consulting">我要开店</view>
+    </view>
+</view>

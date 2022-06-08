@@ -1,0 +1,4 @@
+<image class="success-image" src="/pages/img/certificate-checked.png" mode="aspectFill"></image>
+<view class="success-tip">恭喜您已成为分销合伙人</view>
+<view class="join-coummity" bindtap="joinCoummity">加入分销合伙人沟通群</view>
+<view class="go-back" bindtap="goBack">返回</view>

@@ -1,0 +1,124 @@
+page,
+.page {
+    background-color: #f6f6f6;
+}
+
+.input-baby-info-container{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.baby-area {
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+}
+
+.change-adult {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    right: 0;
+}
+
+.title{
+    text-align: center;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 23px 0;
+}
+
+.baby-item {
+    display: flex;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 20px 30px;
+    align-items: center;
+}
+
+.chevron-right {
+    width: 25px;
+    height: 25px;
+    opacity: 0.3;
+    margin-left: auto;
+}
+
+.needed {
+    font-size: 12px;
+    margin-left: -10px;
+    color: #666666;
+}
+
+.item-input {
+    letter-spacing: 1px;
+    font-size: 14px;
+    margin-left: auto;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.item-picker {
+    margin-left: auto;
+}
+
+.picker-container {
+    display: flex;
+    align-items: center;
+}
+
+.birthday {
+    font-size: 15px;
+    color: #666666;
+    margin-right: 10px;
+}
+
+.add-baby-btn {
+
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 2px;
+    color: white;
+    font-size: 19px;
+    background: linear-gradient(#fbb36b, #ff8109);
+    padding: 10px 0;
+    border-radius: 30px;
+    margin-top: 30px;
+
+}
+
+.cover-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.qr-image {
+    width: 80%;
+    height: 70%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 15%;
+}
+
+.cover-close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 4%;
+}
+
+.save-btn{
+    background-color: #fbfafc;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+    padding: 5px 0;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}

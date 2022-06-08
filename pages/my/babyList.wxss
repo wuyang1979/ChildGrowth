@@ -1,0 +1,58 @@
+page,
+.page {
+    background-color: white;
+}
+
+.my-baby-container {
+    padding-top: 10px;
+}
+
+.baby-item {
+    display: flex;
+    padding: 20px 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.baby-edit-image {
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+}
+
+.baby-name {
+    font-weight: 550;
+    letter-spacing: 1px;
+    margin-right: 30px;
+    width: 30%;
+}
+
+.baby-gender {
+    margin-right: 45px;
+    color: #7b7b7b;
+}
+
+.baby-birthday {
+    color: #7b7b7b;
+}
+
+.add-baby-btn {
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    padding: 20px 20px;
+}
+
+.finish-btn{
+    width: 90%;
+    text-align: center;
+    letter-spacing: 2px;
+    color: white;
+    font-size: 19px;
+    background: linear-gradient(#fbb36b, #ff8109);
+    padding: 10px 0;
+    position: fixed;
+    bottom: 5px;
+    left: 40rpx;
+}

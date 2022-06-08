@@ -1,0 +1,28 @@
+<view class="address-info-container">
+    <view class="address-info-area">
+        <view class="name-area">
+            <view class="name-tip">收货人</view>
+            <input type="text" class="name-input" placeholder="请填写收货人姓名" value="{{name}}" bindinput="inputName" />
+        </view>
+        <view class="phone-area">
+            <view class="phone-tip">手机号</view>
+            <input type="text" class="phone-input" placeholder="请填写收货人手机号" value="{{phone}}" bindinput="inputPhone" />
+        </view>
+        <view class="location-area">
+            <picker class="location-picker" mode="multiSelector" bindchange="func_changeCitysChange" bindcolumnchange="changeCitysChangeColumn" value="{{ citysIndex }}" range="{{ cityArray }}" range-key="name">
+                <view class="location-picker-inner">
+                    <view class="location-tip">所在地区</view>
+                    <view class="{{region.length==0?'location gray':'location'}}">{{region.length==0?'选择所在地区':region[0]+' '+region[1]+' '+region[2]}}</view>
+                    <image class="chevron-right" src="/pages/img/chevron-right.png" mode="aspectFill"></image>
+                </view>
+            </picker>
+        </view>
+        <view class="address-area">
+            <textarea name="address" id="address" class="address" cols="30" rows="4" value="{{address}}" placeholder="请填写详细地址，如接到、楼牌号等" bindinput="inputAddress"></textarea>
+        </view>
+    </view>
+
+    <view class="submit-area">
+        <button bindtap="submit" class="submit-btn" formType="submit">保存</button>
+    </view>
+</view>

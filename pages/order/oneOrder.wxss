@@ -1,0 +1,204 @@
+page,
+.page {
+    background-color: #f2f2f2;
+}
+
+.user-phone-area {
+    background-color: white;
+    display: flex;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
+.user-address-area {
+    background-color: white;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.address {
+    font-size: 15px;
+    margin-top: 3px;
+    width: 90%;
+}
+
+.address-chevron-right {
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+    position: absolute;
+    right: 5px;
+    top: 35px;
+}
+
+.phone {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.product-info-area {
+    background-color: white;
+    padding-top: 5px;
+    margin-bottom: 15px;
+}
+
+.product-info {
+    display: flex;
+    padding: 8px 15px;
+    background-color: #f2f2f2;
+}
+
+.product-info-left {
+    height: 70px;
+    margin-right: 10px;
+}
+
+.product-info-image {
+    width: 100px;
+    height: 70px;
+}
+
+.product-info-right {
+    font-size: 14px;
+    width: 65%;
+}
+
+.product-name {
+    margin-top: 5px;
+}
+
+.product-introduce {
+    margin-top: 15px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-info {
+    display: flex;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.order-name {
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.order-num {
+    width: 20%;
+    text-align: center;
+}
+
+.order-total {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.tip-area {
+    background-color: white;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.tip-title {
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+.tip-content {
+    font-size: 13px;
+    color: #3e3e3e;
+}
+
+.price-area {
+    background-color: white;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.total-price-area,
+.order-no-area {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.total-price {
+    margin-left: auto;
+}
+
+.pay-price-area,
+.create-time-area {
+    display: flex;
+    align-items: baseline;
+}
+
+.pay-price {
+    margin-left: auto;
+    color: #eb9a41;
+}
+
+.order-area {
+    background-color: white;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.consult-area {
+    background-color: white;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.consult-image {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.qr-area {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+}
+
+.qr-code {
+    font-weight: bold;
+    font-family: fantasy;
+    margin-bottom: 10px;
+    margin-left: auto;
+}
+
+.qr-image {
+    width: 150px;
+    height: 150px;
+    padding: 5px;
+    background: linear-gradient(to top, #bbdbf4, #bbdbf4) left top no-repeat, linear-gradient(to right, #bbdbf4, #bbdbf4) left top no-repeat, linear-gradient(to left, #bbdbf4, #bbdbf4) right top no-repeat, linear-gradient(to bottom, #bbdbf4, #bbdbf4) right top no-repeat, linear-gradient(to left, #bbdbf4, #bbdbf4) left bottom no-repeat, linear-gradient(to bottom, #bbdbf4, #bbdbf4) left bottom no-repeat, linear-gradient(to top, #bbdbf4, #bbdbf4) right bottom no-repeat, linear-gradient(to left, #bbdbf4, #bbdbf4) right bottom no-repeat;
+    background-size: 2px 16px, 16px 2px, 2px 16px, 16px 2px;
+}
+
+.qr-tip {
+    font-size: 14px;
+    font-family: fantasy;
+    text-align: center;
+}
+
+.qr-container {
+    text-align: center;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "add-tips": "/pages/index/weplug-add-tips-master/index"
+  },
+  "enablePullDownRefresh": true
+}

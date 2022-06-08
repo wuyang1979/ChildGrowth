@@ -1,0 +1,209 @@
+<wxs module="tool" src="../../utils/tool.wxs"></wxs>
+
+<view class="one-product">
+    <view class="main-image-area">
+        <image class="one-product-image" src="{{main_image}}" data-src="{{main_image}}" mode="aspectFill" bindtap="previewImage"></image>
+        <view class="main-image-cover"></view>
+    </view>
+
+    <view class="one-product-info">
+        <view class="one-product-cover">
+            <view class="one-product-name">
+                <view class="one-product-name-value">{{name}}</view>
+            </view>
+
+            <view class="wuyu-area" wx:if="{{product_type==1}}">
+                <image class="wuyu-image" src="/pages/img/de.png" mode="aspectFill" wx:if="{{showDeFlag}}"></image>
+                <image class="wuyu-image" src="/pages/img/zhi.png" mode="aspectFill" wx:if="{{showZhiFlag}}"></image>
+                <image class="wuyu-image" src="/pages/img/ti.png" mode="aspectFill" wx:if="{{showTiFlag}}"></image>
+                <image class="wuyu-image" src="/pages/img/mei.png" mode="aspectFill" wx:if="{{showMeiFlag}}"></image>
+                <image class="wuyu-image" src="/pages/img/lao.png" mode="aspectFill" wx:if="{{showLaoFlag}}"></image>
+            </view>
+
+            <view class="one-product-item" style="align-items: center;">
+                <image class="item-image" src="/pages/img/deadline-time.png" mode="aspectFill"></image>
+                <view class="item-content" style="letter-spacing: 1px;">{{product_type==0?'购买截止时间： '+deadline_time:'购买截止时间： '+deadline_time}}</view>
+            </view>
+
+            <view class="address-area" wx:if="{{address!=''}}" bindtap="openMapByTencent" style="align-items: center;">
+                <view class="address-cover">
+                    <view class="address-left-area">
+                        <view class="address-name">{{address_name}}</view>
+                        <view class="address-content">
+                            <image class="address-image" src="/pages/img/address.png" mode="aspectFill"></image>
+                            <view class="item-content item-address">{{address}}</view>
+                        </view>
+                    </view>
+                    <image class="position" src="/pages/img/position.png" mode="aspectFill"></image>
+                </view>
+            </view>
+
+            <view class="activity-package-ticket-area" wx:if="{{product_type==1}}">
+                <view class="package-ticket-item" wx:for="{{standardList}}" wx:key="index">
+                    <view class="package-left-area">
+                        <view class="package-name">{{item.standardName}}</view>
+                        <view class="package-price">{{item.price==0?'免费':'￥'+item.price}}</view>
+                    </view>
+                    <view class="package-buy-btn" data-present_price="{{item.price}}" data-standard_id="{{item.id}}" data-standard_index="{{index}}" data-once_max_purchase_count="{{item.onceMaxPurchaseCount}}" data-once_min_purchase_count="{{item.onceMinPurchaseCount}}" bindtap="onGotUserInfo2">抢购</view>
+                </view>
+            </view>
+
+            <view class="activity-package-ticket-area" wx:if="{{product_type==0}}">
+                <view class="package-ticket-item" wx:for="{{standardList}}" wx:key="index">
+                    <view class="package-left-area">
+                        <view class="package-name">{{item.name}}</view>
+                        <view class="package-price">{{item.price==0?'免费':'￥'+item.price}}</view>
+                    </view>
+                    <view class="package-buy-btn" data-present_price="{{item.price}}" data-standard_id="{{item.id}}" data-standard_index="{{index}}" data-once_max_purchase_count="{{item.onceMaxPurchaseCount}}" data-once_min_purchase_count="{{item.onceMinPurchaseCount}}" bindtap="onGotUserInfo2">抢购</view>
+                </view>
+            </view>
+
+        </view>
+        <view class="one-product-cover" wx:if="{{instruction!=''}}" style="margin-bottom: 10px;margin-top: 10px;">
+            <view>
+                <view class="base-instruction-area">
+                    <view class="base-instruction-tip">· 购买须知 ·</view>
+                </view>
+
+                <view class="one-base-introduce-lab">
+                    <text class="one-base-introduce">
+                        {{instruction}}
+                    </text>
+                </view>
+            </view>
+        </view>
+
+        <view class="one-product-cover" style="padding-bottom: 0;">
+            <view class="base-introduce-area">
+                <view class="base-introduce-tip">· 产品详情 ·</view>
+            </view>
+            <!-- 产品详情： -->
+            <view class="one-base-introduce-lab">
+                <text class="one-base-introduce" wx:if="{{introduce!=''}}">
+                    {{introduce}}
+                </text>
+
+                <view class="one-base-picture-area" wx:if="{{pictureList.length>0}}">
+                    <image wx:for="{{pictureList}}" wx:key="index" class="one-base-picture-item" src="{{item}}" data-src="{{item}}" mode="widthFix" bindtap="previewImage"></image>
+                </view>
+
+                <!-- class="{{pictureList.length>0?'one-base-video-area':''}}" -->
+                <view wx:if="{{video_path!=''}}">
+                    <video class="one-base-video-item" src="{{video_path}}"></video>
+                </view>
+            </view>
+        </view>
+
+        <!-- 猜你喜欢 -->
+        <view class="one-product-cover recommend-area" wx:if="{{recommendProductList.length>0}}">
+            <view class="recommend-top-area">
+                <image class="recommend-image" src="/pages/img/recommend-product.png" mode="aspectFill"></image>
+                <view class="recommend-tip">猜你喜欢</view>
+                <view class="change-btn" bindtap="changeRecommendList">换一换</view>
+            </view>
+
+            <view class="product-item" wx:for="{{recommendProductList}}" wx:key="index" data-buy_count="{{item.buy_count}}" data-address="{{item.address}}" data-address_name="{{item.address_name}}" data-longitude="{{item.longitude}}" data-latitude="{{item.latitude}}" data-card_id="{{item.card_id}}" data-shop_id="{{item.shop_id}}" data-type="{{item.type}}" data-product_type="{{item.product_type}}" data-product_style="{{item.product_style}}" data-create_time="{{item.create_time}}" data-deadline_time="{{item.deadline_time}}" data-id="{{item.id}}" data-instruction="{{item.instruction}}" data-introduce="{{item.introduce}}" data-is_hot="{{item.is_hot}}" data-main_image="{{item.main_image}}" data-name="{{item.name}}" data-once_max_purchase_count="{{item.once_max_purchase_count}}" data-phone="{{item.phone}}" data-present_price="{{item.present_price}}" data-repeat_purchase="{{item.repeat_purchase}}" data-vedio_path="{{item.vedio_path}}" data-company_name="{{item.company_name}}" bindtap="oneProduct">
+                <view class="product-item-left">
+                    <image class="product-item-image" src="{{item.main_image}}" mode="aspectFill"></image>
+                </view>
+
+                <view class="product-item-right">
+                    <view class="product-item-name">{{item.name}}</view>
+                    <view class="product-item-introduce">{{item.introduce}}</view>
+                    <view style="height: 20.8px;"></view>
+                    <!-- <view class="product-item-buyCount">{{'已售 '+item.buy_count}}</view> -->
+                    <view class="product-item-price">
+                        <view class="product-item-price-tip" wx:if="{{item.present_price!=0}}">￥</view>
+                        <view class="{{item.onlyOneStandard&&item.present_price==0?'product-item-presentPrice margin-left':'product-item-presentPrice'}}">{{item.onlyOneStandard&&item.present_price==0?'免费':item.present_price}}</view>
+                        <view class="product-item-presentPrice-tip" wx:if="{{!item.onlyOneStandard}}">元起</view>
+                    </view>
+
+                    <button class="panic-buy-btn">{{item.product_type==1?"报名":"抢购"}}</button>
+                </view>
+
+                <image class="hot-image" src="/pages/img/hot.png" mode="aspectFill" wx:if="{{item.is_hot==1}}"></image>
+            </view>
+        </view>
+
+        <image class="bottom-logo-image" src="/pages/img/qzys.png" mode="aspectFill" catchtap="toTechPage"></image>
+        <view class="bottom-logo-tip" catchtap="toTechPage">提供技术支持</view>
+
+    </view>
+
+    <view class="bottom-button">
+        <button class="bottom-left-button activity-bottom-left" bindtap="showShareArea">
+            <image class="bottom-left-image" src="/pages/img/share.png" mode="aspectFill"></image>
+            <view class="share">分享</view>
+        </button>
+        <view class="bottom-middle-button activity-bottom-left" bindtap="consult">
+            <image class="bottom-middle-image" src="/pages/img/consult.png" mode="aspectFill"></image>
+            <view class="consult">咨询</view>
+        </view>
+    </view>
+
+    <view class="cover-area" wx:if="{{isOrderAreaShow}}">
+        <view class="cover-bottom-area">
+            <view class="max-tip" wx:if="{{isMaxTipShow}}">{{"每单最多购买"+onceMaxPurchaseCount+"份"}}</view>
+            <view class="max-tip" wx:if="{{isMinTipShow}}">{{"每单至少购买"+onceMinPurchaseCount+"份"}}</view>
+            <view class="close-image-area" bindtap="closeOrderArea">
+                <image class="close-image" src="/pages/img/close.png" mode="aspectFill"></image>
+            </view>
+
+            <view class="cover-name-area">
+                <view class="cover-name">{{name}}</view>
+            </view>
+
+            <view class="cover-tip-area">
+                <image class="cover-image" src="/pages/img/authed.png" mode="aspectFill"></image>
+                <view class="cover-tip">该商户已完成企业认证</view>
+            </view>
+
+            <view class="cover-standard-area">
+                <view class="cover-standard-name">{{selectStandardName}}</view>
+            </view>
+
+            <view class="cover-total-area">
+                <view class="cover-total-tip">合计</view>
+                <view class="cover-total">{{"￥"+tool.getDecimal(present_price,oneBuyCount)}}</view>
+            </view>
+
+            <view class="amount-area">
+                <view class="amount-tip">数量</view>
+                <view class="amount-content-area">
+                    <image class="amount-left" src="/pages/img/minus.png" mode="aspectFill" bindtap="minus"></image>
+                    <view class="amount-middle">{{oneBuyCount}}</view>
+                    <image class="amount-right" src="/pages/img/plus.png" mode="aspectFill" bindtap="plus"></image>
+                </view>
+            </view>
+
+            <view class="cover-bottom-right" bindtap="auth">
+                下一步
+            </view>
+        </view>
+    </view>
+
+    <view class="cover-area" catch:touchmove wx:if="{{isShareShow}}">
+        <view class="share-area">
+            <view class="share-top-area">
+                <button class="share-top-left" open-type="share">
+                    <image class="share-image" src="/pages/img/forward.png" mode="aspectFill"></image>
+                    <view class="share-tip">转发</view>
+                </button>
+                <button class="share-top-right" bindtap="generatePoster">
+                    <image class="share-image" src="/pages/img/generate-poster.png" mode="aspectFill"></image>
+                    <view class="share-tip">生成海报</view>
+                </button>
+            </view>
+            <view class="share-bottom-area" bindtap="closeShareArea">取消</view>
+        </view>
+    </view>
+</view>
+
+<view class="poster-cover-area" catch:touchmove wx:if="{{isPosterShow}}">
+    <view class="warp">
+        <canvas class="canvas-hide" style="width: 686rpx; height: 890rpx;" canvas-id="share"></canvas>
+        <image class="canvas-image" src="{{posterSrc}}" data-src="{{posterSrc}}" alt="" bindtap="previewImage" />
+    </view>
+    <view class="save-poster-btn" wx:if="{{posterSrc!=''}}" bindtap="savePoster">保存海报</view>
+    <image class="close-poster-image" src="/pages/img/close-poster.png" mode="aspectFill" wx:if="{{posterSrc!=''}}" bindtap="closePoster"></image>
+</view>

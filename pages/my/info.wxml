@@ -1,0 +1,51 @@
+<wxs module="phoneFilter" src="../../utils/tool.wxs"></wxs>
+
+<view class="info-container">
+    <view class="head-img-area">
+        <view class="head-img-tip">头像</view>
+        <image class="head-img" src="{{head_img_url}}" mode="aspectFill"></image>
+    </view>
+
+    <view class="main-info-area">
+        <view class="nick-name-area">
+            <view class="nick-name-tip">昵称</view>
+            <view class="nick-name">{{nick_name}}</view>
+        </view>
+        <view class="birthday-area">
+            <picker class="birthday-picker" mode="date" value="{{birthday}}" start="1930" end="" bindchange="changeBirthday">
+                <view class="picker-container">
+                    <view class="birthday-tip">生日</view>
+                    <view class="birthday">{{birthday}}</view>
+                    <image class="chevron-right" src="/pages/img/chevron-right.png" mode="aspectFill"></image>
+                </view>
+            </picker>
+        </view>
+        <view class="birthday-area">
+            <picker class="birthday-picker" range="{{columns}}" value="{{gender}}" bindchange="changeGender">
+                <view class="picker-container">
+                    <view class="birthday-tip">性别</view>
+                    <view class="birthday">{{columns[gender]}}</view>
+                    <image class="chevron-right" src="/pages/img/chevron-right.png" mode="aspectFill"></image>
+                </view>
+            </picker>
+        </view>
+    </view>
+
+    <view class="other-info-area">
+        <view class="post-address-area" bindtap="toAddressPage">
+            <view class="post-address-tip">收货地址</view>
+            <view class="blank"></view>
+            <image class="chevron-right" src="/pages/img/chevron-right.png" mode="aspectFill"></image>
+        </view>
+        <view class="phone-area">
+            <view class="phone-tip">手机号</view>
+            <view class="phone">{{phoneFilter.getPhone(phone)}}</view>
+            <view class="blank" style="margin-left: inherit;"></view>
+        </view>
+        <view class="my-baby-area" bindtap="toBabyListPage">
+            <view class="my-baby-tip">我的宝贝</view>
+            <view class="birthday">{{myBaby}}</view>
+            <image class="{{myBaby==''?'chevron-right special-chevron':'chevron-right'}}" src="/pages/img/chevron-right.png" mode="aspectFill"></image>
+        </view>
+    </view>
+</view>

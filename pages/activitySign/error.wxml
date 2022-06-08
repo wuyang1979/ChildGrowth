@@ -1,0 +1,9 @@
+<view class="activity-container">
+    <view class="image-area">
+        <image class="error-image" src="/pages/img/sign-error.png" mode="aspectFill"></image>
+    </view>
+    <view class="title">{{title}}</view>
+    <view class="tip">{{tip}}</view>
+    <view class="go-back-btn" bindtap="goBack">返回</view>
+    <view class="to-index-btn" bindtap="toIndex">回首页</view>
+</view>

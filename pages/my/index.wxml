@@ -1,0 +1,129 @@
+<wxs module="phoneFilter" src="../../utils/tool.wxs"></wxs>
+
+<view class="my-container">
+    <view class="top-area" bindtap="onGotUserInfo">
+        <!-- 用户信息 -->
+        <view class="user-info">
+            <image class="{{id=='-1'?'user-image opacity':'user-image'}}" src="{{head_img_url}}" mode="aspectFill"></image>
+            <view class="inner-area">
+                <view class="user-name">{{nick_name}}</view>
+                <view class="user-phone">{{phoneFilter.getPhone(phone)}}</view>
+            </view>
+        </view>
+        <image class="right-arrow1" src="/pages/img/right-arrow1.png" mode="aspectFill"></image>
+    </view>
+
+    <view class="order-container">
+        <view class="order-area">
+            <view class="order-tip">成长中心</view>
+            <view class="growth-center-bottom-area">
+                <view class="pending-pay" bindtap="toCertificateList">
+                    <view class="certificate-num">{{certificateNum}}</view>
+                    <view class="pending-pay-tip">活动证书</view>
+                </view>
+                <view class="pedding-receive" bindtap="toGrowthProcess">
+                    <image class="growth-process-image" src="/pages/img/growth-process.png" mode="aspectFill"></image>
+                    <view class="pending-receive-tip">成长历程</view>
+                </view>
+                <view class="finished" bindtap="dev">
+                    <image class="growth-portrait-image" src="/pages/img/growth-portrait.png" mode="aspectFill"></image>
+                    <view class="finished-tip">成长画像</view>
+                </view>
+                <view class="all" bindtap="toGrowthValue">
+                    <view class="growth-value">{{growthValue}}</view>
+                    <view class="all-tip">成长值</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="order-container">
+        <view class="order-area">
+            <view class="order-tip">我的订单</view>
+            <view class="order-bottom-area">
+                <view class="all" data-index="-1" bindtap="toOrderList">
+                    <image class="all-image" src="/pages/img/all-order.png" mode="aspectFill"></image>
+                    <view class="all-tip">全部订单</view>
+                </view>
+                <view class="pending-pay" data-index="0" bindtap="toOrderList">
+                    <image class="pending-pay-image" src="/pages/img/pedding-pay.png" mode="aspectFill"></image>
+                    <view class="pending-pay-tip">待支付</view>
+                </view>
+                <view class="pedding-receive" data-index="1" bindtap="toOrderList">
+                    <image class="pending-receive-image" src="/pages/img/pedding-receive.png" mode="aspectFill"></image>
+                    <view class="pending-receive-tip">待收货</view>
+                </view>
+                <view class="finished" data-index="2" bindtap="toOrderList">
+                    <image class="finished-image" src="/pages/img/finished-order.png" mode="aspectFill"></image>
+                    <view class="finished-tip">已完成</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <image class="distribution-partner-image" src="/pages/img/distribution-partner.png" mode="widthFix" bindtap="joinDistributionPartner" wx:if="{{!hasShop}}"></image>
+
+    <view class="order-container" wx:if="{{hasShop}}">
+        <view class="order-area">
+            <view class="order-tip">分销中心</view>
+            <view class="order-bottom-area">
+                <view class="all" bindtap="selectionCenter">
+                    <image class="all-image" src="/pages/img/selection-center.png" mode="aspectFill"></image>
+                    <view class="all-tip">选品中心</view>
+                </view>
+                <view class="pending-pay" bindtap="distributionOrder">
+                    <image class="pending-pay-image" src="/pages/img/distribution-order.png" mode="aspectFill"></image>
+                    <view class="pending-pay-tip">分销订单</view>
+                </view>
+                <view class="pedding-receive" bindtap="myTeam">
+                    <image class="pending-receive-image" src="/pages/img/my-team.png" mode="aspectFill"></image>
+                    <view class="pending-receive-tip">我的团队</view>
+                </view>
+                <view class="finished" bindtap="myEarnings">
+                    <image class="finished-image" src="/pages/img/my-earnings.png" mode="aspectFill"></image>
+                    <view class="finished-tip">我的收益</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="order-container">
+        <view class="order-area">
+            <view class="order-bottom-area">
+                <view class="pending-pay" bindtap="toMyShop">
+                    <image class="pending-pay-image" src="/pages/img/my-shop.png" mode="aspectFill"></image>
+                    <view class="pending-pay-tip">我的小店</view>
+                </view>
+                <view class="all">
+                    <navigator class="coopreate-navigator" target="miniProgram" open-type="navigate" app-id="wx2f3e800fce3fd438" path="" version="release">
+                        <image class="all-image" src="/pages/img/entrance.png" mode="aspectFill"></image>
+                        <view class="all-tip">商家入口</view>
+                    </navigator>
+                </view>
+                <view class="pending-pay" bindtap="toCoopreatePage">
+                    <image class="pending-pay-image" src="/pages/img/coopreate.png" mode="aspectFill"></image>
+                    <view class="pending-pay-tip">商务合作</view>
+                </view>
+                <view class="pedding-receive" bindtap="toAboutPage">
+                    <image class="pending-receive-image" src="/pages/img/about.png" mode="aspectFill"></image>
+                    <view class="pending-receive-tip">关于我们</view>
+                </view>
+                <!-- <view class="finished" data-index="2" bindtap="toOrderList">
+                    <image class="finished-image" src="/pages/img/finished-order.png" mode="aspectFill"></image>
+                    <view class="finished-tip">已完成</view>
+                </view> -->
+            </view>
+        </view>
+    </view>
+
+    <image class="bottom-logo-image" src="/pages/img/qzys.png" mode="aspectFill" catchtap="toTechPage"></image>
+    <view class="bottom-logo-tip" catchtap="toTechPage">提供技术支持</view>
+
+</view>
+
+<view class="cover-area" wx:if="{{isDistributionPartnerShow}}">
+    <view class="close-distribution-partner-area">
+        <image class="close-distribution-partner" src="/pages/img/close-distribution-partner.png" mode="aspectFill" bindtap="closeDistributionPartnerShow"></image>
+    </view>
+    <image class="distribution-partner-poster" src="/pages/img/distribution-partner-poster.png" mode="widthFix" bindtap="joinDistributionPartnerPrePay"></image>
+</view>

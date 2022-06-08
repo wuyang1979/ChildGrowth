@@ -1,0 +1,91 @@
+page,
+.page {
+    background-color: #f7f7f7;
+}
+
+.one-panel {
+    margin-top: 10px;
+    background-color: white;
+}
+
+.title {
+    margin-left: 5px;
+    border-left-width: 5px;
+    border-left-color: #008FD1;
+    border-left-style: solid;
+}
+
+.desc {
+    font-size: 0.7em;
+}
+
+.weui-msg__text-area {
+    margin-bottom: 10px;
+}
+
+.qr-tip {
+    margin-bottom: 5px;
+    margin-left: 13px;
+}
+
+.qr-img {
+    width: 210px;
+    height: 210px;
+}
+
+.qr-area {
+    margin-bottom: 30px;
+}
+
+.weui-msg__icon-area {
+    margin-bottom: 20px;
+}
+
+.weui-msg__extra-area {
+    margin-bottom: 0;
+}
+
+.bottom-left-button {
+    width: 200px;
+    display: inline-block;
+    background-color: white;
+    padding: 0px 10px 0px 0;
+}
+
+.generate-qr-btn {
+    width: 30%;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #1a92d5, #45bafb);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.see-order-btn {
+    background-color: #09bb07;
+    color: white;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.weui-footer__text {
+    font-size: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.home-back-btn {
+    background-color: #fbfafc;
+    color: black;
+    width: 80%;
+    border: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.home-back-btn:after {
+    border: none;
+}

@@ -1,0 +1,6 @@
+<view class="qr-tip">扫码进群</view>
+<image class="qr-code" src="/pages/img/distributionQr.png" mode="aspectFill" data-src="/pages/img/distributionQr.png" bindtap="previewImage"></image>
+<view class="qr-cell">
+    <cell class="bottom-left-button" bind:startmessage='startmessage' bind:completemessage="completemessage" url='https://work.weixin.qq.com/gm/3d18116f132dc5d70ceb795394ff1f4b' />
+</view>
+<view class="go-back" bindtap="goBack">返回</view>

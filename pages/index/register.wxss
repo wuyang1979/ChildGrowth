@@ -1,0 +1,72 @@
+.top-area {
+    margin-top: 80px;
+}
+
+.title-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: #ffb876;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.title-name {
+    font-size: 27px;
+    font-family: cursive;
+}
+
+.btn-area {
+    margin-top: 80px;
+}
+
+.phone-login-btn {
+    display: flex;
+    background-color: #09c362;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 0;
+    width: 85%;
+    border-radius: 25px;
+}
+
+.weixin {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.btn-name {
+    color: white;
+    font-size: 17px;
+}
+
+.bottom-area {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+}
+
+.check-box {
+    font-size: 13px;
+    width: 100%;
+    padding: 0 0 0 20px;
+}
+
+.check-content-area {
+    display: flex;
+}
+
+.wx-checkbox-input {
+    width: 30rpx !important;
+    height: 30rpx !important;
+}
+
+.check-agreement{
+    color: #45b7eb;
+}

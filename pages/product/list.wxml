@@ -1,0 +1,58 @@
+<view class="index-container">
+    <!-- 顶部区域 -->
+    <view class="top-area">
+        <!-- 用户信息 -->
+        <view class="user-info" bindtap="onGotUserInfo">
+            <image class="user-image" src="{{head_img_url}}" mode="aspectFill"></image>
+            <view class="user-name">{{nick_name}}</view>
+        </view>
+
+        <!-- 搜索框 -->
+        <view class="main-title">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索产品" value="{{searchValue}}" focus="{{inputShowed}}" bindinput="inputTyping" bindblur="searchSubmit" bindconfirm="searchSubmit" />
+                    <view class="weui-icon-clear" wx:if="{{searchValue.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 城市 -->
+        <!-- <view class="city-area">
+            <view class="city-btn-select" bindtap="selectCity">{{cityName + ' ▾ '}} </view>
+        </view> -->
+    </view>
+
+    <!-- 产品内容 -->
+    <view class="content-area">
+        <view class="content-title">超值上新</view>
+        <view class="product-item" wx:for="{{productList}}" wx:key="index" data-buy_count="{{item.buy_count}}" data-address="{{item.address}}" data-address_name="{{item.address_name}}" data-longitude="{{item.longitude}}" data-latitude="{{item.latitude}}" data-card_id="{{item.card_id}}" data-shop_id="{{item.shop_id}}" data-type="{{item.type}}" data-product_type="{{item.product_type}}" data-product_style="{{item.product_style}}" data-wuyu_type="{{item.wuyu_type}}" data-create_time="{{item.create_time}}" data-deadline_time="{{item.deadline_time}}" data-id="{{item.id}}" data-instruction="{{item.instruction}}" data-introduce="{{item.introduce}}" data-is_hot="{{item.is_hot}}" data-main_image="{{item.main_image}}" data-name="{{item.name}}" data-once_max_purchase_count="{{item.once_max_purchase_count}}" data-phone="{{item.phone}}" data-present_price="{{item.present_price}}" data-repeat_purchase="{{item.repeat_purchase}}" data-vedio_path="{{item.vedio_path}}" data-company_name="{{item.company_name}}" bindtap="oneProduct">
+            <view class="product-item-left">
+                <image class="product-item-image" src="{{item.main_image}}" mode="aspectFill"></image>
+            </view>
+
+            <view class="product-item-right">
+                <view class="product-item-name">{{item.name}}</view>
+                <view class="product-item-introduce">{{item.introduce}}</view>
+                <!-- <view class="product-item-buyCount">{{'已售 '+item.buy_count}}</view> -->
+                <view style="height: 20.8px;" wx:if="{{!isDistributor||item.distribution==''}}"></view>
+                <view class="distribution-tip" wx:if="{{isDistributor&&((item.distribution!=''&&item.onlyOneStandard)||(item.distribution!=''&&!item.onlyOneStandard&&item.distribution==item.distributionMin))}}">{{'赚'+item.distribution}}</view>
+                <view class="distribution-tip" wx:if="{{isDistributor&&(item.distribution!=''&&!item.onlyOneStandard&&item.distribution!=item.distributionMin)}}">{{'赚'+item.distributionMin+'~'+item.distribution}}</view>
+                <view class="product-item-price">
+                    <view class="product-item-price-tip" wx:if="{{item.present_price!=0||!item.onlyOneStandard}}">￥</view>
+                    <view class="{{item.onlyOneStandard&&item.present_price==0?'product-item-presentPrice margin-left':'product-item-presentPrice'}}">{{item.onlyOneStandard&&item.present_price==0?'免费':item.present_price}}</view>
+                    <view class="product-item-presentPrice-tip" wx:if="{{!item.onlyOneStandard}}">元起</view>
+                </view>
+                <button class="panic-buy-btn">{{item.product_type==1?"报名":"抢购"}}</button>
+            </view>
+
+            <image class="hot-image" src="/pages/img/hot.png" mode="aspectFill" wx:if="{{item.is_hot==1}}"></image>
+        </view>
+    </view>
+
+    <image class="bottom-logo-image" src="/pages/img/qzys.png" mode="aspectFill" catchtap="toTechPage"></image>
+    <view class="bottom-logo-tip" catchtap="toTechPage">提供技术支持</view>
+</view>

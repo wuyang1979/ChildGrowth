@@ -1,0 +1,10 @@
+<view class="page">
+    <view class="weui-msg">
+
+        <!-- 企业微信 -->
+        <view class="qr-area">
+            <view class="qr-tip">请添加企业微信</view>
+            <image class="qr-img" src="/pages/img/wy-qr.png" mode="aspectFill" data-src="/pages/img/wy-qr.png" bindtap="previewImage"></image>
+        </view>
+    </view>
+</view>

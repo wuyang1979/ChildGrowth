@@ -1,0 +1,46 @@
+var messageTypeStr = ['赞助招商', '项目合作', '招租转让', '资源互换', '求职招聘', '其它信息'];
+
+var levelStr = ['无', '5A级景区', '4A级景区', '3A级景区', '2A级景区', 'A级景区'];
+
+var industryStr = ['教育培训', '亲子活动', '生活服务', '亲子基地', '其他行业'];
+
+var scopeStr = ['1~10', '11~50', '51~100', '101~500', '501~1000', '1001~10000', '10000+'];
+
+var districtStr = ['秦淮区', '玄武区', '建邺区', '雨花台区', '鼓楼区', '江宁区', '六合区', '浦口区', '栖霞区', '高淳区', '溧水区'];
+
+var translateMessageType = function (value) {
+  if (!!value || value == 0) {
+    var index = parseInt(value);
+    return '[' + messageTypeStr[index] + ']';
+  }
+  return '';
+}
+
+var phoneFilter = {
+  getPhone: function (phone) {
+    if (phone !== '' && phone != undefined) {
+      var regexp = getRegExp('^(\d{3})\d{4}(\d+)', 'g');
+      return phone.replace(regexp, '$1****$2');
+    } else {
+      return phone;
+    }
+  }
+}
+
+var decimalFilter = {
+  getDecimal: function (num1, num2) {
+    var num = num1 * num2;
+    return num.toFixed(1);
+  }
+}
+
+module.exports = {
+  messageTypeStr: messageTypeStr,
+  translateMessageType: translateMessageType,
+  levelStr: levelStr,
+  districtStr: districtStr,
+  industryStr: industryStr,
+  scopeStr: scopeStr,
+  getPhone: phoneFilter.getPhone,
+  getDecimal: decimalFilter.getDecimal,
+}

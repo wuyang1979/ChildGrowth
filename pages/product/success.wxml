@@ -1,0 +1,25 @@
+<view class="page">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" size="93"></icon>
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">支付成功</view>
+        </view>
+        <!-- 群活码 -->
+        <view class="qr-area" wx:if="{{qrUrl!=''}}">
+            <view class="qr-tip">{{qrTip}}</view>
+            <image class="qr-img" src="{{qrUrl}}" mode="aspectFill" data-src="{{qrUrl}}" bindtap="previewImage"></image>
+            <cell class="bottom-left-button cell" bind:startmessage='startmessage' bind:completemessage="completemessage" url='https://work.weixin.qq.com/gm/3722d43298e701c35036f72e662e91eb' wx:if="{{companyId==286}}" />
+            <view class="generate-qr-btn-area" wx:if="{{companyId!=286}}">
+                <view class="generate-qr-btn" bindtap="downloadQr" bindtap="saveQr">保存图片</view>
+            </view>
+        </view>
+
+
+        <button class="see-order-btn" bindtap="toOrderList">查看订单</button>
+        <button class="home-back-btn" bindtap="goBackIndex">返回首页</button>
+        <view class="weui-footer__text">Copyright © 2017-2022 中企云服（南京）科技有限公司</view>
+    </view>
+
+</view>

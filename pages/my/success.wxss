@@ -1,0 +1,45 @@
+page,
+.page {
+    background-color: #fcfaff;
+}
+
+.success-image {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.success-tip {
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: -20px;
+}
+
+.join-coummity {
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: #09ba07;
+    color: white;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 8px 0;
+    border-radius: 5px;
+}
+
+.go-back {
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: #fbfbfd;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #d6d4d7;
+}

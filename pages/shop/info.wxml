@@ -1,0 +1,40 @@
+<view class="shop-container">
+    <view class="shop-top-area">
+        <!-- 机构logo -->
+        <image class="logo" src="{{logopic}}"></image>
+        <view class="shop-top-right-area">
+            <!-- 小店名称 -->
+            <view class="shop-name">{{shopName}}</view>
+            <view class="auth-area">
+                <image class="auth-image" src="/pages/img/authed.png" mode="aspectFill"></image>
+                <view class="auth-tip">企业已认证</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="shop-product-area">
+        <view class="product-item" wx:for="{{productList}}" wx:key="index" data-buy_count="{{item.buy_count}}" data-address="{{item.address}}" data-address_name="{{item.address_name}}" data-longitude="{{item.longitude}}" data-latitude="{{item.latitude}}" data-card_id="{{item.card_id}}" data-type="{{item.type}}" data-product_type="{{item.product_type}}" data-product_style="{{item.product_style}}" data-wuyu_type="{{item.wuyu_type}}" data-create_time="{{item.create_time}}" data-deadline_time="{{item.deadline_time}}" data-id="{{item.id}}" data-instruction="{{item.instruction}}" data-introduce="{{item.introduce}}" data-is_hot="{{item.is_hot}}" data-main_image="{{item.main_image}}" data-name="{{item.name}}" data-once_max_purchase_count="{{item.once_max_purchase_count}}" data-phone="{{item.phone}}" data-present_price="{{item.present_price}}" data-repeat_purchase="{{item.repeat_purchase}}" data-vedio_path="{{item.vedio_path}}" data-dis_shop_id="{{item.disShopId}}" bindtap="oneProduct">
+            <image class="product-item-image" src="{{item.main_image}}" mode="aspectFill"></image>
+            <view class="product-item-name">{{item.name}}</view>
+            <view class="product-item-bottom">
+                <view class="product-item-proce" wx:if="{{(item.product_type==0)||(item.product_type==1&&item.onlyOneStandard)}}">{{item.present_price==0?'免费':'￥'+item.present_price}}</view>
+                <view class="product-item-proce" wx:if="{{item.product_type==1&&!item.onlyOneStandard}}">{{'￥'+item.present_price+'元起'}}</view>
+                <view class="product-item-buy-count">{{'已售'+item.buy_count}}</view>
+            </view>
+        </view>
+    </view>
+
+    <image class="bottom-logo-image" src="/pages/img/qzys.png" mode="aspectFill" catchtap="toTechPage"></image>
+    <view class="bottom-logo-tip" catchtap="toTechPage">提供技术支持</view>
+</view>
+
+<view class="bottom-button">
+    <button class="bottom-left-button activity-bottom-left" open-type="share">
+        <image class="bottom-left-image" src="/pages/img/share.png" mode="aspectFill"></image>
+        <view class="share">分享</view>
+    </button>
+    <view class="bottom-middle-button activity-bottom-left" bindtap="consult">
+        <image class="bottom-middle-image" src="/pages/img/consult.png" mode="aspectFill"></image>
+        <view class="consult">咨询</view>
+    </view>
+</view>

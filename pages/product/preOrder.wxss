@@ -1,0 +1,183 @@
+page,
+.page {
+    background-color: #f2f2f2;
+}
+
+.user-phone-area {
+    background-color: white;
+    display: flex;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
+.user-address-area {
+    background-color: white;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.address {
+    font-size: 15px;
+    margin-top: 3px;
+    width: 90%;
+}
+
+.address-chevron-right{
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+    position: absolute;
+    right: 5px;
+    top: 35px;
+}
+
+.phone {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.product-info-area {
+    background-color: white;
+    padding-top: 5px;
+    margin-bottom: 15px;
+}
+
+.product-info {
+    display: flex;
+    padding: 8px 15px;
+    background-color: #f2f2f2;
+}
+
+.product-info-left {
+    height: 70px;
+    margin-right: 10px;
+}
+
+.product-info-image {
+    width: 100px;
+    height: 70px;
+}
+
+.product-info-right {
+    font-size: 14px;
+    width: 65%;
+}
+
+.product-name {
+    margin-top: 5px;
+}
+
+.product-introduce {
+    margin-top: 15px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-info {
+    display: flex;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.order-name {
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.order-num {
+    width: 20%;
+    text-align: center;
+}
+
+.order-total {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.tip-area {
+    background-color: white;
+    padding: 10px 15px;
+}
+
+.tip-title {
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+.tip-content {
+    font-size: 13px;
+    color: #3e3e3e;
+}
+
+
+.bottom-image-area {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 15px;
+    color: #fe992d;
+}
+
+.ensure-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.ensure-tip {
+    margin-right: 5px;
+}
+
+.refund-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+
+.cover-bottom-btn-area {
+    display: flex;
+    align-items: flex-end;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.cover-bottom-left {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.total-tip {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.total-count {
+    font-size: 18px;
+    color: #eb9a41;
+}
+
+.cover-bottom-right {
+    width: 50%;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    background-color: #0198e7;
+    font-size: 18px;
+}

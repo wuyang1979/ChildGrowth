@@ -1,0 +1,154 @@
+<view class="shop-container" wx:if="{{index==0}}">
+    <view class="shop-top-area">
+        <!-- 机构logo -->
+        <image class="logo" src="{{logopic}}"></image>
+        <view class="">
+            <view class="shop-top-right-area">
+                <!-- 小店名称 -->
+                <view class="shop-name">{{shopName}}</view>
+                <image class="auth-image" src="/pages/img/shop-authed.png" mode="aspectFill"></image>
+                <view class="auth-tip">企业认证</view>
+            </view>
+            <view class="shop-bottom-right-area">
+                <image class="see-image" src="/pages/img/see-image.png" mode="aspectFill"></image>
+                <view class="see-tip">{{visitCount+'人看过'}}</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="shop-container-cover">
+        <view class="newest-activity">
+            <view class="newest-tip">最新活动</view>
+        </view>
+
+        <view class="shop-product-area">
+            <view class="product-item" wx:for="{{productList}}" wx:key="index" data-buy_count="{{item.buy_count}}" data-address="{{item.address}}" data-address_name="{{item.address_name}}" data-longitude="{{item.longitude}}" data-latitude="{{item.latitude}}" data-card_id="{{item.card_id}}" data-type="{{item.type}}" data-product_type="{{item.product_type}}" data-product_style="{{item.product_style}}" data-wuyu_type="{{item.wuyu_type}}" data-create_time="{{item.create_time}}" data-deadline_time="{{item.deadline_time}}" data-id="{{item.id}}" data-instruction="{{item.instruction}}" data-introduce="{{item.introduce}}" data-is_hot="{{item.is_hot}}" data-main_image="{{item.main_image}}" data-name="{{item.name}}" data-once_max_purchase_count="{{item.once_max_purchase_count}}" data-phone="{{item.phone}}" data-present_price="{{item.present_price}}" data-repeat_purchase="{{item.repeat_purchase}}" data-vedio_path="{{item.vedio_path}}" data-dis_shop_id="{{item.disShopId}}" bindtap="oneProduct">
+                <image class="product-item-image" src="{{item.main_image}}" mode="aspectFill"></image>
+                <view class="product-item-name">{{item.name}}</view>
+                <view class="product-item-bottom">
+                    <view class="product-item-proce" wx:if="{{(item.product_type==0)||(item.product_type==1&&item.onlyOneStandard)}}">{{item.present_price==0?'免费':'￥'+item.present_price}}</view>
+                    <view class="product-item-proce" wx:if="{{item.product_type==1&&!item.onlyOneStandard}}">{{'￥'+item.present_price+'元起'}}</view>
+                    <!-- <view class="product-item-buy-count">{{'已售'+item.buy_count}}</view> -->
+                </view>
+            </view>
+        </view>
+
+        <image class="bottom-logo-image" src="/pages/img/qzys.png" mode="aspectFill" wx:if="{{productList.length>0}}" catchtap="toTechPage"></image>
+        <view class="bottom-logo-tip" wx:if="{{productList.length>0}}" catchtap="toTechPage">提供技术支持</view>
+    </view>
+</view>
+
+<view class="shop-my-container" wx:if="{{index==1}}">
+    <wxs module="phoneFilter" src="../../utils/tool.wxs"></wxs>
+
+    <view class="my-container">
+        <view class="top-area" bindtap="onGotUserInfo">
+            <!-- 用户信息 -->
+            <view class="user-info">
+                <image class="{{id=='-1'?'user-image opacity':'user-image'}}" src="{{head_img_url}}" mode="aspectFill"></image>
+                <view class="inner-area">
+                    <view class="user-name">{{nick_name}}</view>
+                    <view class="user-phone">{{phoneFilter.getPhone(phone)}}</view>
+                </view>
+            </view>
+            <image class="right-arrow1" src="/pages/img/right-arrow1.png" mode="aspectFill"></image>
+        </view>
+
+        <view class="order-container">
+            <view class="order-area">
+                <view class="order-tip">成长中心</view>
+                <view class="growth-center-bottom-area">
+                    <view class="pending-pay" bindtap="toCertificateList">
+                        <view class="certificate-num">{{certificateNum}}</view>
+                        <view class="pending-pay-tip">活动证书</view>
+                    </view>
+                    <view class="pedding-receive" bindtap="toGrowthProcess">
+                        <image class="growth-process-image" src="/pages/img/growth-process.png" mode="aspectFill"></image>
+                        <view class="pending-receive-tip">成长历程</view>
+                    </view>
+                    <view class="finished" bindtap="dev">
+                        <image class="growth-portrait-image" src="/pages/img/growth-portrait.png" mode="aspectFill"></image>
+                        <view class="finished-tip">成长画像</view>
+                    </view>
+                    <view class="all" bindtap="toGrowthValue">
+                        <view class="growth-value">{{growthValue}}</view>
+                        <view class="all-tip">成长值</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="order-container">
+            <view class="order-area">
+                <view class="order-tip">我的订单</view>
+                <view class="order-bottom-area">
+                    <view class="all" data-index="-1" bindtap="toOrderList">
+                        <image class="all-image" src="/pages/img/all-order.png" mode="aspectFill"></image>
+                        <view class="all-tip">全部订单</view>
+                    </view>
+                    <view class="pending-pay" data-index="0" bindtap="toOrderList">
+                        <image class="pending-pay-image" src="/pages/img/pedding-pay.png" mode="aspectFill"></image>
+                        <view class="pending-pay-tip">待支付</view>
+                    </view>
+                    <view class="pedding-receive" data-index="1" bindtap="toOrderList">
+                        <image class="pending-receive-image" src="/pages/img/pedding-receive.png" mode="aspectFill"></image>
+                        <view class="pending-receive-tip">待收货</view>
+                    </view>
+                    <view class="finished" data-index="2" bindtap="toOrderList">
+                        <image class="finished-image" src="/pages/img/finished-order.png" mode="aspectFill"></image>
+                        <view class="finished-tip">已完成</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- <view class="order-container">
+            <view class="order-area">
+                <view class="order-bottom-area">
+                    <view class="pending-pay" bindtap="toMyShop">
+                        <image class="pending-pay-image" src="/pages/img/my-shop.png" mode="aspectFill"></image>
+                        <view class="pending-pay-tip">我的小店</view>
+                    </view>
+                    <view class="all">
+                        <navigator class="coopreate-navigator" target="miniProgram" open-type="navigate" app-id="wx2f3e800fce3fd438" path="" version="release">
+                            <image class="all-image" src="/pages/img/entrance.png" mode="aspectFill"></image>
+                            <view class="all-tip">商家入口</view>
+                        </navigator>
+                    </view>
+                    <view class="pending-pay" bindtap="toCoopreatePage">
+                        <image class="pending-pay-image" src="/pages/img/coopreate.png" mode="aspectFill"></image>
+                        <view class="pending-pay-tip">商务合作</view>
+                    </view>
+                    <view class="pedding-receive" bindtap="toAboutPage">
+                        <image class="pending-receive-image" src="/pages/img/about.png" mode="aspectFill"></image>
+                        <view class="pending-receive-tip">关于我们</view>
+                    </view>
+                </view>
+            </view>
+        </view> -->
+        <image class="bottom-logo-image" src="/pages/img/qzys.png" mode="aspectFill" catchtap="toTechPage"></image>
+        <view class="bottom-logo-tip" catchtap="toTechPage">提供技术支持</view>
+    </view>
+</view>
+
+<view class="bottom-button">
+    <view class="{{index==0?'bottom-left-button selected':'bottom-left-button'}}" bindtap="toIndexPageForShop">
+        <image class="bottom-left-image" src="{{index==0?'/pages/img/index-light-up.png':'/pages/img/index.png'}}" mode="aspectFill"></image>
+        <view class="share">首页</view>
+    </view>
+    <view class="{{index==1?'bottom-middle-button selected':'bottom-middle-button'}}" bindtap="toMyPageForShop">
+        <image class="bottom-middle-image" src="{{index==1?'/pages/img/my-light-up.png':'/pages/img/my.png'}}" mode="aspectFill"></image>
+        <view class="consult">我的</view>
+    </view>
+</view>
+
+<!-- <view class="bottom-button">
+    <button class="bottom-left-button" open-type="share">
+        <image class="bottom-left-image" src="/pages/img/share.png" mode="aspectFill"></image>
+        <view class="share">分享</view>
+    </button>
+    <view class="bottom-middle-button" bindtap="consult">
+        <image class="bottom-middle-image" src="/pages/img/consult.png" mode="aspectFill"></image>
+        <view class="consult">咨询</view>
+    </view>
+</view> -->

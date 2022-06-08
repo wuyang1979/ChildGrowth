@@ -1,0 +1,26 @@
+<view class="register-container">
+    <view class="top-area">
+        <view class="title-area">
+            <image class="logo" src="/pages/img/default_bg.png" mode="aspectFill"></image>
+            <view class="title-name">成长GO</view>
+        </view>
+    </view>
+
+    <view class="btn-area">
+        <button class="phone-login-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            <image class="weixin" src="/pages/img/weixin.png" mode="aspectFill"></image>
+            <view class="btn-name">微信手机号快捷登录</view>
+        </button>
+    </view>
+
+    <view class="bottom-area">
+        <checkbox class="check-box" checked="{{isAgree}}" bindtap="agree">
+            <view class="check-content-area">
+                <view class="check-content">我已阅读并同意</view>
+                <view class="check-agreement" catchtap="toUserZhengCe">《成长GO用户协议》</view>
+                <view class="check-content">和</view>
+                <view class="check-agreement" catchtap="toYinSi">《隐私政策》</view>
+            </view>
+        </checkbox>
+    </view>
+</view>

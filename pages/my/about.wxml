@@ -1,0 +1,8 @@
+<view class="page">
+    <view class="weui-msg">
+
+        <view class="qr-area">
+            <view class="qr-tip">成长GO是南京亲子大联盟旗下的儿童成长活动平台，主要面向3-12岁的儿童。</view>
+        </view>
+    </view>
+</view>

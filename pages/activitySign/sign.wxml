@@ -1,0 +1,12 @@
+<view class="activity-container" wx:if="{{hasRegistered}}">
+    <view class="phone-area">
+        <view class="tip">请输入手机号核验</view>
+        <view class="middle-area">
+            <image class="phone-image" src="/pages/img/sign-phone.png" mode="aspectFill"></image>
+            <input class="phone-input" type="number" placeholder="请填写您的手机号码" bindinput="inputPhone" />
+        </view>
+        <view class="line"></view>
+
+        <view class="confirm" bindtap="confirm">确认</view>
+    </view>
+</view>

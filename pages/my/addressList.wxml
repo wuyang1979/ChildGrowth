@@ -1,0 +1,21 @@
+<view class="address-list-container">
+    <view class="address-list-area">
+        <view class="address-item" wx:for="{{addressList}}" wx:key="index">
+            <view class="name">{{item.receive_name}}</view>
+            <view class="phone">{{item.receive_phone}}</view>
+            <view class="address">{{item.province+item.city+item.area+item.address}}</view>
+            <view class="edit-area" data-id="{{item.id}}" data-receive_name="{{item.receive_name}}" data-receive_phone="{{item.receive_phone}}" data-province="{{item.province}}" data-city="{{item.city}}" data-area="{{item.area}}" data-address="{{item.address}}" bindtap="editAddress">
+                <image src="/pages/img/edit.png" class="edit-img" mode="aspectFill"></image>
+                <view class="edit-tip">编辑</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="weui-msg__extra-area">
+        <view class="weui-footer">
+            <view class="weui-footer__links">
+                <button class="home-bak-btn" bindtap="goHome">回到首页</button>
+            </view>
+        </view>
+    </view>
+</view>
