@@ -20,6 +20,8 @@ Page({
         type: '',
         product_type: '',
         product_style: '',
+        activity_type1: '',
+        activity_type2: '',
         main_image: '',
         address: '',
         address_name: "",
@@ -1046,6 +1048,12 @@ Page({
                 let video_path = data.vedio_path ? (data.vedio_path.indexOf("https") == -1 ? 'https://qinzi123.com' + data.vedio_path : data.vedio_path) : '';
                 let type = data.type;
                 let product_type = data.product_type;
+                let activity_type1 = "";
+                let activity_type2 = "";
+                if (product_type == 1) {
+                    activity_type1 = data.activity_type1;
+                    activity_type2 = data.activity_type2;
+                }
                 let shop_id = data.shop_id;
                 let product_style = data.product_style;
                 let wuyuType = data.wuyu_type;
@@ -1127,6 +1135,8 @@ Page({
                     type: type,
                     product_type: product_type,
                     product_style: product_style,
+                    activity_type1: activity_type1,
+                    activity_type2: activity_type2,
                     shop_id: shop_id,
                     orderBtnName: orderBtnName,
                     showDeFlag: showDeFlag,
@@ -1368,7 +1378,7 @@ Page({
                                                     isShareShow: false,
                                                     isPosterShow: true,
                                                 })
-                                                setTimeout(op.drawCanvas(), 20)
+                                                setTimeout(op.drawCanvas, 20)
                                             }
                                         }
                                     });
@@ -1413,7 +1423,7 @@ Page({
                                 isShareShow: false,
                                 isPosterShow: true,
                             })
-                            setTimeout(op.drawCanvas(), 20)
+                            setTimeout(op.drawCanvas, 20)
                         }
                     }
                 });
@@ -1424,7 +1434,7 @@ Page({
                 isShareShow: false,
                 isPosterShow: true,
             })
-            setTimeout(op.drawCanvas(), 20)
+            setTimeout(op.drawCanvas, 20)
         }
     },
 
@@ -1677,6 +1687,73 @@ Page({
         })
     },
 
+    closePoster(e) {
+        this.setData({
+            isPosterShow: false,
+            posterSrc: "",
+        })
+    },
+
+    savePoster(e) {
+        let op = this;
+        let imgSrc = op.data.posterSrc;
+        if (imgSrc == "") {
+            wx.showToast({
+                title: '海报地址为空',
+                icon: "none"
+            });
+            return;
+        }
+        wx.getImageInfo({
+            src: imgSrc,
+            success: res => {
+                wx.saveImageToPhotosAlbum({
+                    filePath: res.path,
+                    success(res) {
+                        wx.showToast({
+                            title: '保存图片成功！',
+                        })
+                        op.setData({
+                            isPosterShow: false,
+                            posterSrc: "",
+                        })
+                    },
+                    fail(res) {
+                        //未授权操作
+                        if (res.errMsg) {
+                            //重新授权弹框确认
+                            wx.showModal({
+                                title: '温馨提示',
+                                content: '您好,请先获取相册授权',
+                                showCancel: false,
+                                success(res) {
+                                    if (res.confirm) {
+                                        //重新授权弹框用户点击了确定
+                                        wx.openSetting({
+                                            //进入小程序授权设置页面
+                                            success(settingdata) {
+                                                if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                                                    //用户打开了保存图片授权开关
+                                                } else {
+                                                    //用户未打开保存图片到相册的授权开关
+                                                    wx.showModal({
+                                                        title: '温馨提示',
+                                                        content: '授权失败，请稍后重新获取',
+                                                        showCancel: false,
+                                                    })
+                                                }
+                                            }
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -1702,6 +1779,12 @@ Page({
             let video_path = options.video_path ? (options.video_path.indexOf("https") == -1 ? 'https://qinzi123.com' + options.video_path : options.video_path) : '';
             let type = options.type;
             let product_type = options.product_type;
+            let activity_type1 = "";
+            let activity_type2 = "";
+            if (product_type == 1) {
+                activity_type1 = options.activity_type1;
+                activity_type2 = options.activity_type2;
+            }
             let shop_id = options.shop_id;
             let product_style = options.product_style;
             let orderBtnName;
@@ -1791,6 +1874,8 @@ Page({
                 type: type,
                 product_type: product_type,
                 product_style: product_style,
+                activity_type1: activity_type1,
+                activity_type2: activity_type2,
                 shop_id: shop_id,
                 orderBtnName: orderBtnName,
                 isPlatDistribute: isPlatDistribute,
@@ -1863,79 +1948,12 @@ Page({
             })
         }
         this.getcodeImg();
-        setTimeout(this.getUserInfoById(), 50)
+        setTimeout(this.getUserInfoById, 50)
         this.getRecommendProductList();
         wx.showShareMenu({
             withShareTicket: true,
             menus: ['shareAppMessage', 'shareTimeline']
         });
-    },
-
-    closePoster(e) {
-        this.setData({
-            isPosterShow: false,
-            posterSrc: "",
-        })
-    },
-
-    savePoster(e) {
-        let op = this;
-        let imgSrc = op.data.posterSrc;
-        if (imgSrc == "") {
-            wx.showToast({
-                title: '海报地址为空',
-                icon: "none"
-            });
-            return;
-        }
-        wx.getImageInfo({
-            src: imgSrc,
-            success: res => {
-                wx.saveImageToPhotosAlbum({
-                    filePath: res.path,
-                    success(res) {
-                        wx.showToast({
-                            title: '保存图片成功！',
-                        })
-                        op.setData({
-                            isPosterShow: false,
-                            posterSrc: "",
-                        })
-                    },
-                    fail(res) {
-                        //未授权操作
-                        if (res.errMsg) {
-                            //重新授权弹框确认
-                            wx.showModal({
-                                title: '温馨提示',
-                                content: '您好,请先获取相册授权',
-                                showCancel: false,
-                                success(res) {
-                                    if (res.confirm) {
-                                        //重新授权弹框用户点击了确定
-                                        wx.openSetting({
-                                            //进入小程序授权设置页面
-                                            success(settingdata) {
-                                                if (settingdata.authSetting['scope.writePhotosAlbum']) {
-                                                    //用户打开了保存图片授权开关
-                                                } else {
-                                                    //用户未打开保存图片到相册的授权开关
-                                                    wx.showModal({
-                                                        title: '温馨提示',
-                                                        content: '授权失败，请稍后重新获取',
-                                                        showCancel: false,
-                                                    })
-                                                }
-                                            }
-                                        })
-                                    }
-                                }
-                            })
-                        }
-                    }
-                })
-            }
-        })
     },
 
     /**
@@ -1993,6 +2011,7 @@ Page({
             name: op.data.name,
             type: op.data.type,
             product_type: op.data.product_type,
+            product_style: op.data.product_style,
             main_image: op.data.main_image,
             present_price: op.data.present_price,
             repeat_purchase: op.data.repeat_purchase,

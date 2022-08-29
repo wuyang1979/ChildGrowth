@@ -12,12 +12,16 @@
                 <view class="one-product-name-value">{{name}}</view>
             </view>
 
-            <view class="wuyu-area" wx:if="{{product_type==1}}">
-                <image class="wuyu-image" src="/pages/img/de.png" mode="aspectFill" wx:if="{{showDeFlag}}"></image>
-                <image class="wuyu-image" src="/pages/img/zhi.png" mode="aspectFill" wx:if="{{showZhiFlag}}"></image>
-                <image class="wuyu-image" src="/pages/img/ti.png" mode="aspectFill" wx:if="{{showTiFlag}}"></image>
-                <image class="wuyu-image" src="/pages/img/mei.png" mode="aspectFill" wx:if="{{showMeiFlag}}"></image>
-                <image class="wuyu-image" src="/pages/img/lao.png" mode="aspectFill" wx:if="{{showLaoFlag}}"></image>
+            <view class="wuyu-and-activity-type1-area">
+                <view class="activity-type1-value" wx:if="{{product_type==1&&activity_type1==0}}">儿童营</view>
+                <view class="activity-type1-value" wx:if="{{product_type==1&&activity_type1==1}}">亲子营</view>
+                <view class="wuyu-area" wx:if="{{product_type==1}}">
+                    <image class="wuyu-image" src="/pages/img/de.png" mode="aspectFill" wx:if="{{showDeFlag}}"></image>
+                    <image class="wuyu-image" src="/pages/img/zhi.png" mode="aspectFill" wx:if="{{showZhiFlag}}"></image>
+                    <image class="wuyu-image" src="/pages/img/ti.png" mode="aspectFill" wx:if="{{showTiFlag}}"></image>
+                    <image class="wuyu-image" src="/pages/img/mei.png" mode="aspectFill" wx:if="{{showMeiFlag}}"></image>
+                    <image class="wuyu-image" src="/pages/img/lao.png" mode="aspectFill" wx:if="{{showLaoFlag}}"></image>
+                </view>
             </view>
 
             <view class="one-product-item" style="align-items: center;">

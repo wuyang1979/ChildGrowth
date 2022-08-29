@@ -1,0 +1,8 @@
+<image class="success-image" src="/pages/img/withdrawal-success.png" mode="aspectFill"></image>
+<view class="success-title">提现成功</view>
+<!-- <view class="success-tip">预计到账时间为1-5个工作日</view> -->
+
+<view class="see-record-btn" bindtap="seeRecord">查看提现记录</view>
+<view class="go-back-btn" bindtap="goBack">返回</view>
+
+<!-- <view class="bottom-area">© 2017-2021 中企云服科技（南京）有限公司</view> -->

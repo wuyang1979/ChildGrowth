@@ -241,6 +241,14 @@ page,
     margin-top: 30px;
 }
 
+.distribution-partner-image {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .bottom-logo-tip {
     font-size: 12px;
     color: #b5b5b5;
@@ -446,6 +454,35 @@ page,
     margin-top: -5px;
 }
 
+
+.cover-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.distribution-partner-poster {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    width: 80%;
+}
+
+.close-distribution-partner-area {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 140rpx;
+    text-align: right;
+}
+
+.close-distribution-partner {
+    width: 30px;
+    height: 30px;
+}
 
 .top-area {
     display: flex;

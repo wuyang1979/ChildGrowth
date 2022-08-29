@@ -1,0 +1,20 @@
+<view class="page">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" size="93"></icon>
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">欢迎您成为分销合伙人</view>
+        </view>
+
+        <view class="weui-msg__extra-area">
+            <view class="weui-footer">
+                <view class="weui-footer__links">
+                    <button class="home-bak-btn" bindtap="goBack">返回首页</button>
+                </view>
+                <view class="weui-footer__text">Copyright © 2015-2022 中企云服科技（南京）有限公司</view>
+            </view>
+        </view>
+    </view>
+
+</view>

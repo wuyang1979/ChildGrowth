@@ -1,0 +1,28 @@
+<view class="top-area">
+    <view class="top-title">已提现</view>
+    <view class="top-amount">{{allAmount}}</view>
+</view>
+<view class="date-area">
+    <view class="choose-date-area">
+        <picker class="date-picker" mode="date" fields="year" value="{{choosedDate}}" start="2020" end="" bindchange="changeDate">
+            <view class="picker-container">
+                <view class="choosed-date">{{choosedDate}}</view>
+                <image class="select-btn" src="/pages/img/select-btn.png" mode="aspectFill"></image>
+            </view>
+        </picker>
+    </view>
+
+
+    <view class="month-amount">{{'本年度共计提现￥'+monthTotal}}</view>
+</view>
+
+<view class="record-item" wx:for="{{recordList}}" wx:key="index">
+    <view class="item-left-area">
+        <view class="item-bank-info">提现至微信零钱</view>
+        <view class="create-time">{{item.create_time}}</view>
+    </view>
+    <view class="item-right-area">
+        <view class="amount">{{'+'+item.initiate_amount}}</view>
+        <view class="{{item.status==0?'status':'status origin'}}">{{item.status==0?'提现中':'已提现'}}</view>
+    </view>
+</view>

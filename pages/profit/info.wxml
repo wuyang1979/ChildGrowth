@@ -1,0 +1,60 @@
+<view class="cash-out-area" bindtap="seeRecord">
+    <view class="cash-out-top-area">
+        <view class="can-cash-out-num">{{can_withdrawal_money}}</view>
+        <view class="record-tip">提现记录</view>
+        <image class="cash-out-chevron" src="/pages/img/chevron-right-cash-out.png" mode="aspectFill"></image>
+    </view>
+    <view class="cash-out-middle-area">可提现金额（元）</view>
+    <view class="cash-out-bottom-area">
+        <view class="cash-out-bottom-left-area">
+            <view class="has-cash-out-num">{{already_withdrawal_money}}</view>
+            <view class="has-cash-out-tip">已提现（元）</view>
+        </view>
+        <!-- <view class="cash-out-bottom-middle-area"></view>
+        <view class="cash-out-bottom-right-area">
+            <view class="ing-cash-out-num">{{progress_withdrawal_money}}</view>
+            <view class="ing-cash-out-tip">提现中（元）</view>
+        </view> -->
+    </view>
+</view>
+
+<view class="operate-area">
+    <view class="operate-tip">提现金额（元）</view>
+    <view class="operate-bottom">
+        <input class="operate-input" value="{{amount}}" type="digit" placeholder="请输入金额" bindinput="inputAmountOfMoney" />
+        <view class="all-btn" bindtap="allWithdrawal">全部</view>
+    </view>
+</view>
+
+<view class="withdrawal-btn" bindtap="auth">提现到账户</view>
+
+<view class="tip-area">
+    <view class="tip-title">温馨提示</view>
+    <view class="tip-item">· 提现申请不受时间限制，一般1-5个工作日内完成审核并打款</view>
+    <view class="tip-item">· 对公提现金额最低100元/笔，最高5万元/笔，限额10万元/天</view>
+    <view class="tip-item blue">· 提现免手续费，商户仅承担0.6%的支付通道（微信）服务费</view>
+    <view class="tip-item" data-phone="18913388884" bindtap="makePhone">· 如有疑问请联系电话：<text class="blue">18913388884</text></view>
+</view>
+
+<view class="profit-area">
+    <view class="{{profitType=='0'?'profit-type-tab profit-type-selected':'profit-type-tab'}}" data-value="0" bindtap="showSelfProfitList">直卖收益</view>
+    <view class="{{profitType=='1'?'profit-type-tab profit-type-selected':'profit-type-tab'}}" data-value="1" bindtap="showTeamProfitList">团队收益</view>
+</view>
+<view class="profit-tip-area">
+    <view class="customer-tip">您分销的客户</view>
+    <view class="total-pay-tip">总消费（￥）</view>
+    <view class="profit-to-self-tip">为我带来收益（￥）</view>
+</view>
+
+<view class="profit-list-area" wx:for="{{profitList}}" wx:key="index" wx:if="{{profitList.length>0}}">
+    <view class="profit-list-inner-area">
+        <image class="customer-head-img" src="{{item.headImgUrl}}" mode="aspectFill"></image>
+        <view class="customer-nickname">{{item.nickName}}</view>
+    </view>
+    <view class="customer-total-pay">{{item.customerTotalPay}}</view>
+    <view class="customer-profit-to-self-total">{{item.customerBringProfitToSelfTotal}}</view>
+</view>
+
+<view class="profit-none-list-tip" wx:if="{{profitList.length==0}}">
+    暂无收益
+</view>

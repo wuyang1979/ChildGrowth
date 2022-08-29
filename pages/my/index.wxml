@@ -61,27 +61,31 @@
         </view>
     </view>
 
-    <image class="distribution-partner-image" src="/pages/img/distribution-partner.png" mode="widthFix" bindtap="joinDistributionPartner" wx:if="{{!hasShop}}"></image>
+    <image class="distribution-partner-image" src="/pages/img/distribution-partner.png" mode="widthFix" bindtap="joinDistributionPartner" wx:if="{{!hasDistributionRecord&&!hasShop}}"></image>
 
-    <view class="order-container" wx:if="{{hasShop}}">
+    <view class="order-container" wx:if="{{hasDistributionRecord||hasShop}}">
         <view class="order-area">
             <view class="order-tip">分销中心</view>
             <view class="order-bottom-area">
-                <view class="all" bindtap="selectionCenter">
+                <!-- <view class="all" bindtap="selectionCenter">
                     <image class="all-image" src="/pages/img/selection-center.png" mode="aspectFill"></image>
                     <view class="all-tip">选品中心</view>
-                </view>
-                <view class="pending-pay" bindtap="distributionOrder">
+                </view> -->
+                <view class="pending-pay" bindtap="distributionOrderAuth">
                     <image class="pending-pay-image" src="/pages/img/distribution-order.png" mode="aspectFill"></image>
                     <view class="pending-pay-tip">分销订单</view>
                 </view>
-                <view class="pedding-receive" bindtap="myTeam">
+                <view class="finished" bindtap="myEarningsAuth">
+                    <image class="finished-image" src="/pages/img/my-earnings.png" mode="aspectFill"></image>
+                    <view class="finished-tip">我的收益</view>
+                </view>
+                <view class="pedding-receive" bindtap="myTeamAuth">
                     <image class="pending-receive-image" src="/pages/img/my-team.png" mode="aspectFill"></image>
                     <view class="pending-receive-tip">我的团队</view>
                 </view>
-                <view class="finished" bindtap="myEarnings">
-                    <image class="finished-image" src="/pages/img/my-earnings.png" mode="aspectFill"></image>
-                    <view class="finished-tip">我的收益</view>
+                <view class="pedding-receive" bindtap="generateTeamPosterAuth">
+                    <image class="pending-receive-image" src="/pages/img/development-team.png" mode="aspectFill"></image>
+                    <view class="pending-receive-tip">发展合伙人</view>
                 </view>
             </view>
         </view>
@@ -90,7 +94,7 @@
     <view class="order-container">
         <view class="order-area">
             <view class="order-bottom-area">
-                <view class="pending-pay" bindtap="toMyShop">
+                <view class="pending-pay" bindtap="toMyShop" wx:if="{{hasShop}}">
                     <image class="pending-pay-image" src="/pages/img/my-shop.png" mode="aspectFill"></image>
                     <view class="pending-pay-tip">我的小店</view>
                 </view>
@@ -126,4 +130,13 @@
         <image class="close-distribution-partner" src="/pages/img/close-distribution-partner.png" mode="aspectFill" bindtap="closeDistributionPartnerShow"></image>
     </view>
     <image class="distribution-partner-poster" src="/pages/img/distribution-partner-poster.png" mode="widthFix" bindtap="joinDistributionPartnerPrePay"></image>
+</view>
+
+<view class="poster-cover-area" catch:touchmove wx:if="{{isPosterShow}}">
+    <view class="warp">
+        <canvas class="canvas-hide" style="width: 686rpx; height: 750rpx;" canvas-id="share"></canvas>
+        <image class="canvas-image" src="{{posterSrc}}" data-src="{{posterSrc}}" alt="" bindtap="previewImage" />
+    </view>
+    <view class="save-poster-btn" wx:if="{{posterSrc!=''}}" bindtap="savePoster">保存海报</view>
+    <image class="close-poster-image" src="/pages/img/close-poster.png" mode="aspectFill" wx:if="{{posterSrc!=''}}" bindtap="closePoster"></image>
 </view>

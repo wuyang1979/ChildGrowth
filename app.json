@@ -40,7 +40,17 @@
         "pages/shop/myShop",
         "pages/my/success",
         "pages/my/distributionQr",
-        "pages/distributionCenter/orderList"
+        "pages/distributionCenter/orderList",
+        "pages/profit/info",
+        "pages/profit/success",
+        "pages/profit/record",
+        "pages/team/list",
+        "pages/team/info",
+        "pages/team/operate",
+        "pages/activity/list",
+        "pages/team/success",
+        "pages/team/fail",
+        "pages/my/test"
     ],
     "tabBar": {
         "list": [

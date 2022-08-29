@@ -1,0 +1,42 @@
+page,
+.page {
+    background-color: #f7f7f7;
+}
+
+.one-panel {
+    margin-top: 10px;
+    background-color: white;
+}
+
+.title {
+    margin-left: 5px;
+    border-left-width: 5px;
+    border-left-color: #008FD1;
+    border-left-style: solid;
+}
+
+.desc {
+    font-size: 0.7em;
+}
+
+.weui-msg__extra-area {
+    position: unset;
+}
+
+.weui-msg__text-area {
+    margin-block-end: 50px;
+}
+
+.weui-footer__text {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.home-bak-btn {
+    background-color: rgb(1, 143, 215);
+    color: white;
+    width: 90%;
+}

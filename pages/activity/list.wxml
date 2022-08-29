@@ -1,15 +1,14 @@
-<add-tips />
 <view class="index-container">
     <!-- 顶部区域 -->
-    <view class="top-area">
+    <!-- <view class="top-area"> -->
         <!-- 用户信息 -->
-        <view class="user-info" bindtap="onGotUserInfo">
+        <!-- <view class="user-info" bindtap="onGotUserInfo">
             <image class="user-image" src="{{head_img_url}}" mode="aspectFill"></image>
             <view class="user-name">{{nick_name}}</view>
-        </view>
+        </view> -->
 
         <!-- 搜索框 -->
-        <view class="main-title">
+        <!-- <view class="main-title">
             <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
                     <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -19,36 +18,21 @@
                     </view>
                 </view>
             </view>
-        </view>
+        </view> -->
 
         <!-- 城市 -->
         <!-- <view class="city-area">
             <view class="city-btn-select" bindtap="selectCity">{{cityName + ' ▾ '}} </view>
         </view> -->
-    </view>
-
-    <view class="activity-type-area">
-        <view class="activity-type-button" data-value="0" catchtap="chooseWeekendCamp">
-            <image class="activity-type-image" src="/pages/img/weekend-camp.png" mode="aspectFill"></image>
-            <view class="activity-type-tip">周末营</view>
-        </view>
-        <view class="activity-type-button" data-value="1" catchtap="chooseVacationCamp">
-            <image class="activity-type-image" src="/pages/img/vacation-camp.png" mode="aspectFill"></image>
-            <view class="activity-type-tip">假期营</view>
-        </view>
-        <view class="activity-type-button" data-value="2" catchtap="chooseWinterAndSummerCamp">
-            <image class="activity-type-image" src="/pages/img/summer-and-winter-camp.png" mode="aspectFill"></image>
-            <view class="activity-type-tip">冬夏令营</view>
-        </view>
-    </view>
+    <!-- </view> -->
 
     <!-- 产品内容 -->
     <view class="content-area">
-        <view class="content-title">
+        <!-- <view class="content-title">
             <view class="{{activityType1===''?'activity-type1-button activity-type1-select':'activity-type1-button'}}" data-value="" catchtap="chooseAllActivityType1">全部</view>
             <view class="{{activityType1==='0'?'activity-type1-button activity-type1-select':'activity-type1-button'}}" data-value="0" catchtap="chooseChildren">儿童营</view>
             <view class="{{activityType1==='1'?'activity-type1-button activity-type1-select':'activity-type1-button'}}" data-value="1" catchtap="chooseParentAndChildren">亲子营</view>
-        </view>
+        </view> -->
         <view class="product-item" wx:for="{{productList}}" wx:key="index" data-buy_count="{{item.buy_count}}" data-address="{{item.address}}" data-address_name="{{item.address_name}}" data-longitude="{{item.longitude}}" data-latitude="{{item.latitude}}" data-card_id="{{item.card_id}}" data-shop_id="{{item.shop_id}}" data-type="{{item.type}}" data-product_type="{{item.product_type}}" data-product_style="{{item.product_style}}" data-activity_type1="{{item.activity_type1}}" data-activity_type2="{{item.activity_type2}}" data-wuyu_type="{{item.wuyu_type}}" data-create_time="{{item.create_time}}" data-deadline_time="{{item.deadline_time}}" data-id="{{item.id}}" data-instruction="{{item.instruction}}" data-introduce="{{item.introduce}}" data-is_hot="{{item.is_hot}}" data-main_image="{{item.main_image}}" data-name="{{item.name}}" data-once_max_purchase_count="{{item.once_max_purchase_count}}" data-phone="{{item.phone}}" data-present_price="{{item.present_price}}" data-repeat_purchase="{{item.repeat_purchase}}" data-vedio_path="{{item.vedio_path}}" data-company_name="{{item.company_name}}" bindtap="oneProduct">
             <view class="product-item-left">
                 <image class="product-item-image" src="{{item.main_image}}" mode="aspectFill"></image>
@@ -72,13 +56,14 @@
                     <view class="distribution-tip" wx:if="{{isDistributor&&(item.distribution!=''&&!item.onlyOneStandard&&item.distribution!=item.distributionMin)}}">{{'赚'+item.distributionMin+'~'+item.distribution}}</view>
                 </view>
 
+                <view class="panic-buy-btn" wx:if="{{item.activity_type1==0}}">儿童营</view>
+                <view class="panic-buy-btn" wx:if="{{item.activity_type1==1}}">亲子营</view>
+
                 <view class="product-item-price">
                     <view class="product-item-price-tip" wx:if="{{item.present_price!=0}}">￥</view>
                     <view class="{{item.onlyOneStandard&&item.present_price==0?'product-item-presentPrice margin-left':'product-item-presentPrice'}}">{{item.onlyOneStandard&&item.present_price==0?'免费':item.present_price}}</view>
                     <view class="product-item-presentPrice-tip" wx:if="{{!item.onlyOneStandard}}">元起</view>
                 </view>
-
-                <button class="panic-buy-btn">{{item.product_type==1?"报名":"抢购"}}</button>
             </view>
 
             <image class="hot-image" src="/pages/img/hot.png" mode="aspectFill" wx:if="{{item.is_hot==1}}"></image>

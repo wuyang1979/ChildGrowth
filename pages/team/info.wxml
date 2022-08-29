@@ -1,0 +1,56 @@
+<view class="customer-info-container">
+    <view class="top-area"></view>
+    <view class="user-info">
+        <image class="head-img-url" src="{{headImgUrl}}" mode="aspectFill"></image>
+        <view class="user-info-right">
+            <view class="nick-name">{{nickName}}</view>
+            <view class="phone">{{phone}}</view>
+        </view>
+    </view>
+    <!-- <view class="detail-info">
+        <view class="detail-tip">
+            <view class="detail-tip-value">基本信息</view>
+        </view>
+        <view class="detail-item">
+            <view class="detail-item-tip">宝贝姓名：</view>
+            <view class="detail-item-value">{{babyName}}</view>
+        </view>
+        <view class="detail-item">
+            <view class="detail-item-tip">收件人：</view>
+            <view class="detail-item-value">{{receiveName}}</view>
+        </view>
+        <view class="detail-item">
+            <view class="detail-item-tip">所在地区：</view>
+            <view class="detail-item-value">{{receiveArea}}</view>
+        </view>
+        <view class="detail-item">
+            <view class="detail-item-tip">详细地址：</view>
+            <view class="detail-item-value">{{receiveAddress}}</view>
+        </view>
+    </view> -->
+
+    <view class="order-info">
+        <view class="detail-tip">
+            <view class="detail-tip-value">分销记录</view>
+        </view>
+        <view class="order-item" wx:for="{{orderList}}" wx:key="index">
+            <image class="main-image" src="{{item.main_image}}" mode="aspectFill"></image>
+            <view class="order-right">
+                <view class="order-right-top">
+                    <view class="product-name">{{item.name}}</view>
+                    <view class="product-price">{{"￥"+item.price}}</view>
+                </view>
+                <view class="order-right-middle">
+                    <view class="standard-name">{{item.standardName}}</view>
+                    <view class="order-num">{{"x"+item.num}}</view>
+                </view>
+                <view class="order-right-bottom">
+                    <view class="pay-time-tip">下单时间：</view>
+                    <view class="pay-time">{{item.pay_time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="go-back" bindtap="goBack">返回</view>
+</view>

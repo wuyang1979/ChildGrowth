@@ -89,30 +89,57 @@ Page({
     },
 
     chooseWeekendCamp: function (e) {
-        let allUrl = util.fillUrlParams("/pages/activity/list", {
-            activityType2: e.currentTarget.dataset.value
+        let op = this;
+        op.setData({
+            activityType2: op.data.activityType2 === '0' ? "" : e.currentTarget.dataset.value,
+            start: 0,
+            hasMoreData: true,
+            searchStart: 0,
+            searchHasMoreData: true,
+            productList: [],
         })
-        wx.navigateTo({
-            url: allUrl,
-        })
+        if (op.data.searchValue == "") {
+            //搜索关键字为空
+            op.loadAllProduct();
+        } else {
+            op.loadSearchProduct();
+        }
     },
 
     chooseVacationCamp: function (e) {
-        let allUrl = util.fillUrlParams("/pages/activity/list", {
-            activityType2: e.currentTarget.dataset.value
+        let op = this;
+        op.setData({
+            activityType2: op.data.activityType2 === '1' ? "" : e.currentTarget.dataset.value,
+            start: 0,
+            hasMoreData: true,
+            searchStart: 0,
+            searchHasMoreData: true,
+            productList: [],
         })
-        wx.navigateTo({
-            url: allUrl,
-        })
+        if (op.data.searchValue == "") {
+            //搜索关键字为空
+            op.loadAllProduct();
+        } else {
+            op.loadSearchProduct();
+        }
     },
 
     chooseWinterAndSummerCamp: function (e) {
-        let allUrl = util.fillUrlParams("/pages/activity/list", {
-            activityType2: e.currentTarget.dataset.value
+        let op = this;
+        op.setData({
+            activityType2: op.data.activityType2 === '2' ? "" : e.currentTarget.dataset.value,
+            start: 0,
+            hasMoreData: true,
+            searchStart: 0,
+            searchHasMoreData: true,
+            productList: [],
         })
-        wx.navigateTo({
-            url: allUrl,
-        })
+        if (op.data.searchValue == "") {
+            //搜索关键字为空
+            op.loadAllProduct();
+        } else {
+            op.loadSearchProduct();
+        }
     },
 
     toTechPage: function (e) {
@@ -294,132 +321,132 @@ Page({
         })
     },
 
-    loadUserInfo: function (e) {
-        let op = this;
-        let id = app.getUserId();
+    // loadUserInfo: function (e) {
+    //     let op = this;
+    //     let id = app.getUserId();
 
-        //判断是否注册
-        if (id == "-1") {
-            if (app.globalData.openId == "") {
-                wx.login({
-                    success: res => {
-                        let code = res.code;
-                        if (code) {
-                            app.post("/business/info/getSessionKeyAndOpenIdByCode", {
-                                code: code,
-                            }, function (data) {
-                                if (app.hasData(data)) {
-                                    app.globalData.openId = data.openId;
-                                    app.globalData.sessionKey = data.sessionKey;
-                                    app.post('/business/info/c_end_code', {
-                                        openId: data.openId
-                                    }, function (data1) {
-                                        if (app.hasData(data1)) {
-                                            if (data1.id == null || data1.id == "-1") {
-                                                wx.setStorageSync('id', '-1');
-                                                id = '-1';
-                                            } else {
-                                                wx.setStorageSync('id', data1.id);
-                                                id = data1.id;
-                                            }
+    //     //判断是否注册
+    //     if (id == "-1") {
+    //         if (app.globalData.openId == "") {
+    //             wx.login({
+    //                 success: res => {
+    //                     let code = res.code;
+    //                     if (code) {
+    //                         app.post("/business/info/getSessionKeyAndOpenIdByCode", {
+    //                             code: code,
+    //                         }, function (data) {
+    //                             if (app.hasData(data)) {
+    //                                 app.globalData.openId = data.openId;
+    //                                 app.globalData.sessionKey = data.sessionKey;
+    //                                 app.post('/business/info/c_end_code', {
+    //                                     openId: data.openId
+    //                                 }, function (data1) {
+    //                                     if (app.hasData(data1)) {
+    //                                         if (data1.id == null || data1.id == "-1") {
+    //                                             wx.setStorageSync('id', '-1');
+    //                                             id = '-1';
+    //                                         } else {
+    //                                             wx.setStorageSync('id', data1.id);
+    //                                             id = data1.id;
+    //                                         }
 
-                                            //加载用户信息
-                                            if (id == '-1') {
-                                                op.setData({
-                                                    id: id,
-                                                    nick_name: '游客',
-                                                    head_img_url: '/pages/img/default_bg.png',
-                                                })
-                                            } else {
-                                                app.post("/index/getUserInfoById", {
-                                                    id: id
-                                                }, function (data2) {
-                                                    if (app.hasData(data2)) {
-                                                        let userInfo = data2[0];
-                                                        op.setData({
-                                                            id: id,
-                                                            nick_name: userInfo.nick_name,
-                                                            head_img_url: userInfo.head_img_url,
-                                                        })
-                                                    }
-                                                })
-                                            }
-                                        }
-                                    });
-                                }
-                            })
-                        }
-                    }
-                });
-            } else {
-                app.post('/business/info/c_end_code', {
-                    openId: app.globalData.openId
-                }, function (data1) {
-                    if (app.hasData(data1)) {
-                        if (data1.id == null || data1.id == "-1") {
-                            wx.setStorageSync('id', '-1');
-                            id = '-1';
-                        } else {
-                            wx.setStorageSync('id', data1.id);
-                            id = data1.id;
-                        }
+    //                                         //加载用户信息
+    //                                         if (id == '-1') {
+    //                                             op.setData({
+    //                                                 id: id,
+    //                                                 nick_name: '游客',
+    //                                                 head_img_url: '/pages/img/default_bg.png',
+    //                                             })
+    //                                         } else {
+    //                                             app.post("/index/getUserInfoById", {
+    //                                                 id: id
+    //                                             }, function (data2) {
+    //                                                 if (app.hasData(data2)) {
+    //                                                     let userInfo = data2[0];
+    //                                                     op.setData({
+    //                                                         id: id,
+    //                                                         nick_name: userInfo.nick_name,
+    //                                                         head_img_url: userInfo.head_img_url,
+    //                                                     })
+    //                                                 }
+    //                                             })
+    //                                         }
+    //                                     }
+    //                                 });
+    //                             }
+    //                         })
+    //                     }
+    //                 }
+    //             });
+    //         } else {
+    //             app.post('/business/info/c_end_code', {
+    //                 openId: app.globalData.openId
+    //             }, function (data1) {
+    //                 if (app.hasData(data1)) {
+    //                     if (data1.id == null || data1.id == "-1") {
+    //                         wx.setStorageSync('id', '-1');
+    //                         id = '-1';
+    //                     } else {
+    //                         wx.setStorageSync('id', data1.id);
+    //                         id = data1.id;
+    //                     }
 
-                        //加载用户信息
-                        if (id == '-1') {
-                            op.setData({
-                                id: id,
-                                nick_name: '游客',
-                                head_img_url: '/pages/img/default_bg.png',
-                            })
-                        } else {
-                            app.post("/index/getUserInfoById", {
-                                id: id
-                            }, function (data2) {
-                                if (app.hasData(data2)) {
-                                    let userInfo = data2[0];
-                                    op.setData({
-                                        id: id,
-                                        nick_name: userInfo.nick_name,
-                                        head_img_url: userInfo.head_img_url,
-                                    })
-                                }
-                            })
-                        }
-                    }
-                });
-            }
-        } else {
-            app.post("/index/getUserInfoById", {
-                id: id
-            }, function (data2) {
-                if (app.hasData(data2)) {
-                    let userInfo = data2[0];
-                    op.setData({
-                        id: id,
-                        nick_name: userInfo.nick_name,
-                        head_img_url: userInfo.head_img_url,
-                    })
-                }
-            })
-        }
-        app.post("/index/getDistributionShopByUserId", {
-            userId: id,
-        }, function (data) {
-            if (app.hasData(data)) {
-                if (data.length > 0) {
-                    //是分销商
-                    op.setData({
-                        isDistributor: true,
-                    })
-                } else {
-                    //不是分销商
-                    op.setData({
-                        isDistributor: false,
-                    })
-                }
-            }
-        })
-    },
+    //                     //加载用户信息
+    //                     if (id == '-1') {
+    //                         op.setData({
+    //                             id: id,
+    //                             nick_name: '游客',
+    //                             head_img_url: '/pages/img/default_bg.png',
+    //                         })
+    //                     } else {
+    //                         app.post("/index/getUserInfoById", {
+    //                             id: id
+    //                         }, function (data2) {
+    //                             if (app.hasData(data2)) {
+    //                                 let userInfo = data2[0];
+    //                                 op.setData({
+    //                                     id: id,
+    //                                     nick_name: userInfo.nick_name,
+    //                                     head_img_url: userInfo.head_img_url,
+    //                                 })
+    //                             }
+    //                         })
+    //                     }
+    //                 }
+    //             });
+    //         }
+    //     } else {
+    //         app.post("/index/getUserInfoById", {
+    //             id: id
+    //         }, function (data2) {
+    //             if (app.hasData(data2)) {
+    //                 let userInfo = data2[0];
+    //                 op.setData({
+    //                     id: id,
+    //                     nick_name: userInfo.nick_name,
+    //                     head_img_url: userInfo.head_img_url,
+    //                 })
+    //             }
+    //         })
+    //     }
+    //     app.post("/index/getDistributionShopByUserId", {
+    //         userId: id,
+    //     }, function (data) {
+    //         if (app.hasData(data)) {
+    //             if (data.length > 0) {
+    //                 //是分销商
+    //                 op.setData({
+    //                     isDistributor: true,
+    //                 })
+    //             } else {
+    //                 //不是分销商
+    //                 op.setData({
+    //                     isDistributor: false,
+    //                 })
+    //             }
+    //         }
+    //     })
+    // },
 
     onGotUserInfo: function (e) {
         let op = this;
@@ -515,21 +542,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // 由公众号跳转过来
-        if (!!options.cityCode) {
-            this.setData({
-                cityCode: options.cityCode,
-                cityName: options.cityName
-            });
-        } else {
-            this.setData({
-                cityCode: -1,
-                cityName: '全国'
-            });
-        }
-
+        let activityType2 = options.activityType2;
+        this.setData({
+            activityType2: activityType2
+        })
         this.loadAllProduct();
-        this.loadUserInfo();
+        // this.loadUserInfo();
 
         wx.showShareMenu({
             withShareTicket: true,
@@ -558,7 +576,7 @@ Page({
             searchValue: "",
             inputShowed: false,
         })
-        this.loadUserInfo();
+        // this.loadUserInfo();
         this.loadAllProduct();
     },
 

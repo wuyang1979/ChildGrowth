@@ -28,6 +28,78 @@ Page({
 
         //由转发的小店进入 0：否；1：是
         enterFromForardShop: 0,
+
+        isDistributionPartnerShow: false,
+        hasDistributionRecord: false,
+        hasShop: false,
+    },
+
+    myTeam: function (e) {
+        let id = app.getUserId();
+        app.post("/index/getShopListByUserId2", {
+            userId: id,
+        }, function (data) {
+            if (app.hasData(data)) {
+                if (data.length > 0) {
+                    let allUrl = util.fillUrlParams("/pages/team/list", {
+                        shopId: data[0].id
+                    });
+                    wx.navigateTo({
+                        url: allUrl,
+                    })
+                } else {
+                    wx.showToast({
+                        title: '您未开通小店',
+                    })
+                    return;
+                }
+            }
+        })
+    },
+
+    closeDistributionPartnerShow: function (e) {
+        this.setData({
+            isDistributionPartnerShow: false,
+        })
+    },
+
+    joinDistributionPartner: function (e) {
+        let op = this;
+        if (op.data.id == '-1') {
+            //未注册
+            app.onGotUserInfo(e, function () {
+                let allUrl = util.fillUrlParams("/pages/index/register")
+                wx.navigateTo({
+                    url: allUrl,
+                })
+            });
+        } else {
+            //已注册
+            op.setData({
+                isDistributionPartnerShow: true,
+            })
+        }
+    },
+
+    getDistributionPartnerListByUserId: function (e) {
+        let op = this;
+        app.post("/index/getDistributionPartnerListByUserId", {
+            userId: op.data.id,
+        }, function (data) {
+            if (app.hasData(data)) {
+                if (data.length == 0) {
+                    //没开通小店
+                    op.setData({
+                        hasDistributionRecord: false,
+                    })
+                } else {
+                    //已开通小店
+                    op.setData({
+                        hasDistributionRecord: true,
+                    })
+                }
+            }
+        })
     },
 
     toIndexPageForShop: function (e) {
@@ -87,6 +159,27 @@ Page({
                     logopic: logopic,
                     visitCount: data.visitCount,
                 })
+            }
+        })
+    },
+
+    loadShopInfoByUserId: function (e) {
+        let op = this;
+        app.post("/index/getShopListByUserId", {
+            userId: op.data.id,
+        }, function (data) {
+            if (app.hasData(data)) {
+                if (data.length == 0) {
+                    //未在亲子云商开通分销小店
+                    op.setData({
+                        hasShop: false,
+                    })
+                } else {
+                    //已在亲子云商开通分销小店
+                    op.setData({
+                        hasShop: true,
+                    })
+                }
             }
         })
     },
@@ -173,6 +266,10 @@ Page({
                                                                 certificateNum: data3.certificateNum
                                                             })
                                                         })
+                                                        //获取小店列表
+                                                        op.getDistributionPartnerListByUserId()
+                                                        //获取小店信息
+                                                        op.loadShopInfoByUserId();
                                                     }
                                                 })
                                             }
@@ -222,6 +319,10 @@ Page({
                                             certificateNum: data3.certificateNum
                                         })
                                     })
+                                    //获取小店列表
+                                    op.getDistributionPartnerListByUserId()
+                                    //获取小店信息
+                                    op.loadShopInfoByUserId();
                                 }
                             })
                         }
@@ -247,9 +348,27 @@ Page({
                             certificateNum: data3.certificateNum
                         })
                     })
+                    //获取小店列表
+                    op.getDistributionPartnerListByUserId()
+                    //获取小店信息
+                    op.loadShopInfoByUserId();
                 }
             })
         }
+    },
+
+    distributionOrder: function (e) {
+        let allUrl = util.fillUrlParams("/pages/distributionCenter/orderList", {});
+        wx.navigateTo({
+            url: allUrl,
+        })
+    },
+
+    myEarnings: function (e) {
+        let allUrl = util.fillUrlParams("/pages/profit/info", {});
+        wx.navigateTo({
+            url: allUrl,
+        })
     },
 
     toOrderList: function (e) {
@@ -279,49 +398,6 @@ Page({
             })
             wx.navigateTo({
                 url: allUrl,
-            })
-        }
-    },
-
-    toMyShop: function (e) {
-        let id = app.getUserId();
-        if (id == '-1') {
-            //未注册
-            wx.showModal({
-                title: '温馨提示~',
-                content: '您还未注册哦~',
-                showCancel: true, //隐藏取消按钮
-                confirmText: "前往注册", //只保留确定更新按钮
-                success: function (res) {
-                    if (res.confirm) {
-                        app.onGotUserInfo(e, function () {
-                            let allUrl = util.fillUrlParams("/pages/index/register")
-                            wx.navigateTo({
-                                url: allUrl,
-                            })
-                        });
-                    }
-                }
-            })
-        } else {
-            app.post("/index/getShopListByUserId", {
-                userId: id,
-            }, function (data) {
-                if (app.hasData(data)) {
-                    if (data.length > 0) {
-                        let allUrl = util.fillUrlParams("/pages/shop/myShop", {
-                            shopId: data[0].id
-                        });
-                        wx.navigateTo({
-                            url: allUrl,
-                        })
-                    } else {
-                        wx.showToast({
-                            title: '您未开通小店',
-                        })
-                        return;
-                    }
-                }
             })
         }
     },
@@ -532,12 +608,71 @@ Page({
         })
     },
 
+    joinDistributionPartnerPrePay: function (e) {
+        let op = this;
+        let userId = op.data.id;
+        app.post("/index/addDistributionPartnerOrder", {
+            userId: userId,
+        }, function (data) {
+            if (typeof data == 'number') {
+                let orderId = data;
+                app.post('/index/joinDistributionPartnerPrePay', {
+                    userId: userId,
+                    id: orderId,
+                    body: "分销合伙人订单",
+                    total: '9.9',
+                    shopId: op.data.shopId,
+                }, function (data) {
+                    if (!!data && !!data.status) {
+                        wx.showToast({
+                            title: '后台处理失败',
+                            icon: "none"
+                        })
+                        return;
+                    }
+                    if (app.hasData(data)) {
+                        // 发起微信支付
+                        wx.requestPayment({
+                            'timeStamp': data.timeStamp,
+                            'nonceStr': data.nonceStr,
+                            'package': data.package,
+                            'signType': data.signType,
+                            'paySign': data.paySign,
+                            'success': function (res) {
+                                let allUrl = util.fillUrlParams('/pages/my/success', {
+
+                                });
+                                wx.navigateTo({
+                                    url: allUrl
+                                });
+                            },
+                            'fail': function (res) {}
+                        })
+                    }
+                })
+            }
+        })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let shopId = options.shopId;
-        let enterFromForardShop = options.enterFromForardShop ? options.enterFromForardShop : 0;
+        let shopId, enterFromForardShop;
+        if (!options.scene || options.scene == '') {
+            shopId = options.shopId;
+            enterFromForardShop = options.enterFromForardShop ? options.enterFromForardShop : 0;
+        } else {
+            let scene = decodeURIComponent(options.scene);
+            if (scene == '') {
+                wx.showToast({
+                    title: '二维码有误',
+                });
+                return;
+            }
+            shopId = util.getUrlParam("shopId", scene);
+            enterFromForardShop = 0;
+        }
         this.setData({
             shopId: shopId,
             enterFromForardShop: enterFromForardShop,
@@ -565,6 +700,9 @@ Page({
      */
     onShow: function (options) {
         wx.hideHomeButton();
+        this.setData({
+            isDistributionPartnerShow: false,
+        })
         this.loadUserInfo();
     },
 

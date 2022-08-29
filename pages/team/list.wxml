@@ -1,0 +1,32 @@
+<view class="customer-index-container">
+    <view class="top-area">
+        <!-- 搜索框 -->
+        <view class="main-title">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14" wx:if="{{searchValue.length == 0}}"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{searchValue}}" bindinput="inputTyping" bindblur="searchSubmit" bindconfirm="searchSubmit" />
+                    <view class="weui-icon-clear" wx:if="{{searchValue.length > 0}}" bindtap="clearSearch">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="my-custormer-area">
+        <image class="my-customer-image" src="/pages/img/my-customer.png" mode="aspectFill"></image>
+        <view class="my-customer-tip">我的团队</view>
+        <view class="customer-count">{{'（'+teamMemberCount+'）'}}</view>
+    </view>
+
+    <view class="customer-item" wx:for="{{teamMemberList}}" wx:key="index" data-id="{{item.id}}" data-phone="{{item.phone}}" data-nick_name="{{item.nick_name}}" data-head_img_url="{{item.head_img_url}}" bindtap="customerInfo">
+        <image class="item-headimgurl" src="{{item.head_img_url}}" mode="aspectFill"></image>
+        <view class="item-middle-area">
+            <view class="item-nick-name">{{item.nick_name}}</view>
+            <view class="item-phone">{{'电话号码：'+item.phone}}</view>
+        </view>
+        <image class="right-arrow" src="/pages/img/right-arrow2.png" mode="aspectFill"></image>
+    </view>
+
+</view>

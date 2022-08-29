@@ -60,9 +60,16 @@ page {
     margin-left: 15px;
 }
 
+.wuyu-and-activity-type1-area {
+    display: flex;
+    align-items: center;
+}
+
 .wuyu-area {
     display: flex;
     align-items: center;
+    margin-left: auto;
+    margin-right: 20px;
 }
 
 .wuyu-image {
@@ -71,13 +78,25 @@ page {
     margin-right: 6px;
 }
 
-.wuyu-image:first-child {
-    margin-left: auto;
+.activity-type1-value {
+    display: inline-block;
+    font-size: 11px;
+    text-align: center;
+    margin-left: 35px;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    color: #ff7c00;
+    border: 1px solid #ff7c00;
+    padding: 1px 5px;
 }
 
-.wuyu-image:last-child {
+/* .wuyu-image:first-child {
+    margin-left: auto;
+} */
+
+/* .wuyu-image:last-child {
     margin-right: 20px;
-}
+} */
 
 .one-product-name::before {
     content: '';

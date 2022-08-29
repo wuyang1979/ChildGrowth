@@ -193,7 +193,6 @@ App({
         return id == '' ? '-1' : id;
     },
 
-
     onGotUserInfo: function (e, func) {
         if (Object.keys(this.globalData.userInfo) == 0) {
             this.getUserProfile(e, func);

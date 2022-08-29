@@ -3,6 +3,34 @@ page,
     background-color: #f5f5f5;
 }
 
+.activity-type-area {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.activity-type-tip {
+    font-size: 14px;
+    margin-top: 2px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.activity-type-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.activity-type-select {
+    color: #ff8c21;
+}
+
 .top-area {
     background: linear-gradient(#ff8c21, #ffc58e);
     padding: 0 5px 10px 5px;
@@ -11,15 +39,51 @@ page,
 }
 
 .content-area {
-    margin-top: 20px;
-    padding: 0 5px 0 5px;
+    padding: 5px 5px 0 5px;
 }
 
 .content-title {
-    font-size: 17px;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-end;
+    min-height: 27px;
+}
+
+.activity-type1-button {
+    padding: 1px 12px;
+    letter-spacing: 2px;
+}
+
+
+.activity-type1-select {
+    color: #ff8c21;
+    font-size: 15px;
     font-weight: bold;
-    margin-bottom: 10px;
-    padding-left: 7px;
+    flex-wrap: wrap;
+}
+
+.activity-type1-select::after {
+    content: '';
+    width: 100%;
+    height: 0;
+    display: block;
+    margin: 0 auto;
+    border-bottom: 2px solid #ff8c21;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
+
+.activity-type1-button:first-child {
+    margin-left: 5px;
+}
+
+.activity-type1-button:last-child {
+    margin-right: 0;
 }
 
 .user-info {
@@ -61,61 +125,6 @@ page,
     border-radius: 5px;
 }
 
-.product-item-introduce {
-    width: 95%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #8f8f8f;
-    font-size: 13px;
-}
-
-.distribution-tip{
-    color: #8f8f8f;
-    font-size: 12px;
-    text-align: right;
-    margin-top: 3px;
-    margin-right: 10px;
-}
-
-.product-item-buyCount {
-    color: #8f8f8f;
-    font-size: 13px;
-    width: 95%;
-    text-align: right;
-    margin-top: 3px;
-}
-
-.product-item-left {
-    margin-right: 10px;
-}
-
-.product-item-right {
-    width: 65%;
-    position: relative;
-}
-
-.product-item-name {
-    margin-top: -5px;
-    width: 95%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.product-item-price {
-    display: flex;
-    align-items: baseline;
-    margin-top: 10px;
-}
-
-.product-item-price-tip {
-    color: red;
-    font-size: 15px;
-    font-style: italic;
-    margin-right: 5px;
-}
-
 
 .bottom-area {
     display: flex;
@@ -151,6 +160,54 @@ page,
     height: 1px;
 }
 
+.product-item-introduce {
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #8f8f8f;
+    font-size: 13px;
+}
+
+.product-item-buyCount {
+    color: #8f8f8f;
+    font-size: 13px;
+    width: 95%;
+    text-align: right;
+    margin-top: 3px;
+}
+
+.product-item-left {
+    margin-right: 10px;
+}
+
+.product-item-right {
+    width: 65%;
+    position: relative;
+}
+
+.product-item-name {
+    margin-top: -5px;
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-item-price {
+    display: flex;
+    align-items: baseline;
+    margin-top: -3px;
+}
+
+.product-item-price-tip {
+    color: red;
+    font-size: 15px;
+    font-style: italic;
+    margin-right: 5px;
+    margin-left: auto;
+}
+
 .product-item-presentPrice {
     font-size: 22px;
     color: red;
@@ -169,16 +226,14 @@ page,
 }
 
 .panic-buy-btn {
-    width: 80px;
-    font-size: 14px;
-    line-height: 28px;
-    background: linear-gradient(35deg, #ffb066, #ff7c00);
-    color: white;
-    font-weight: bold;
-    border-radius: 12px;
+    font-size: 11px;
+    color: #ff7c00;
     position: absolute;
     bottom: 10rpx;
-    right: 10rpx;
+    border: 1px solid #ff7c00;
+    padding: 1px 5px;
+    letter-spacing: 1px;
+    box-sizing: border-box;
 }
 
 .sign-up-btn {
@@ -191,7 +246,7 @@ page,
     border-radius: 12px;
     position: absolute;
     bottom: 10rpx;
-    right: -6rpx;
+    right: 10rpx;
 }
 
 .main-title {
@@ -238,6 +293,20 @@ page,
     text-align: center;
 }
 
+.product-item-middle-area {
+    display: flex;
+    align-items: end;
+    margin-top: 5px;
+}
+
+.distribution-tip {
+    color: #8f8f8f;
+    font-size: 12px;
+    margin-top: 3px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
 .hot-image {
     position: absolute;
     top: 0;
@@ -248,4 +317,14 @@ page,
 
 .margin-left {
     margin-left: 10px;
+}
+
+.wuyu-image {
+    width: 22px;
+    height: 22px;
+    margin-right: 6px;
+}
+
+.wuyu-image:first-child {
+    margin-left: 1px;
 }

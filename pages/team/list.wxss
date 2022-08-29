@@ -1,0 +1,144 @@
+page,
+.page {
+    background-color: white;
+}
+
+.product-manage-container {
+    padding-bottom: 85px;
+}
+
+.main-title {
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.weui-search-bar__form {
+    border: none;
+    border-radius: 7px;
+}
+
+.weui-icon-search_in-box {
+    position: absolute;
+    top: 24rpx;
+    left: 39%;
+}
+
+.weui-search-bar__box {
+    padding-left: 0;
+}
+
+.weui-search-bar__input {
+    height: 35px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.weui-icon-clear {
+    position: absolute;
+    top: 8rpx;
+    right: 3px;
+    z-index: 99;
+}
+
+.top-area {
+    padding-top: 10px;
+    background-color: #efeff4;
+}
+
+.operate-container {
+    margin-top: 10px;
+}
+
+.operate-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    background-color: white;
+}
+
+.first-item {
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+.operate-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.opreate-tip {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.right-arrow2 {
+    width: 15px;
+    height: 15px;
+    margin-left: auto;
+}
+
+.my-custormer-area {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #efeff4;
+}
+
+.my-customer-image {
+    width: 35px;
+    height: 30px;
+}
+
+.my-customer-tip {
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.customer-count {
+    color: #88888a;
+}
+
+.customer-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.customer-item:last-child {
+    border-bottom: none;
+}
+
+.item-headimgurl {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.item-middle-area {
+    width: 70%;
+}
+
+.item-nick-name {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+
+.item-phone {
+    color: #888888;
+}
+
+.right-arrow {
+    width: 12px;
+    height: 12px;
+    margin-left: auto;
+}
